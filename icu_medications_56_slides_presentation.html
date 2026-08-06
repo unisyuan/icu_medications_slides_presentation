@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>急重症常見藥物 (ICU 護理人員 1 小時培訓簡報)</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Outfit:wght@600;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1c7ed6;
+            --primary-dark: #1864ab;
+            --primary-light: #e7f5ff;
+            --bg-color: #ffffff; /* 純淨大器背景 */
+            --text-dark: #0f172a;
+            --text-muted: #334155;
+            --border-color: #e2e8f0;
+            --red-alert: #dc2626;
+            --red-bg: #fef2f2;
+            --amber-warn: #d97706;
+            --amber-bg: #fffbeb;
+            --green-success: #16a34a;
+            --green-bg: #f0fdf4;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Outfit', system-ui, -apple-system, sans-serif;
+            background-color: #090d16;
+            color: var(--text-dark);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 16:9 Presentation Stage */
+        .stage {
+            width: 100vw;
+            height: 100vh;
+            max-width: 177.78vh; /* 16:9 Ratio */
+            max-height: 56.25vw;
+            background-color: var(--bg-color);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            overflow: hidden;
+        }
+
+        /* Header Bar - Borderless Clean Line */
+        .slide-header {
+            height: 85px;
+            padding: 0 50px;
+            background: #ffffff;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .chapter-badge {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .slide-title-text {
+            font-size: 34px;
+            font-weight: 900;
+            color: var(--text-dark);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .slide-counter {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary-dark);
+            background: #e0e7ff;
+            padding: 8px 22px;
+            border-radius: 16px;
+        }
+
+        /* Slide Content Main Stage - Expanded Full Space & Vertical Distribution */
+        .slide-body {
+            flex: 1;
+            padding: 28px 45px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            height: calc(100% - 165px);
+            min-height: 0;
+        }
+
+        /* Continuous Flow Layout - Single Vertical Flex Stream with Natural Flow (Zero Overlap Guaranteed) */
+        .full-layout {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+        }
+
+        .frameless-flow {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+            gap: 12px;
+            overflow-y: auto;
+            padding-right: 6px;
+        }
+
+        /* Custom Modern Scrollbar */
+        .frameless-flow::-webkit-scrollbar {
+            width: 6px;
+        }
+        .frameless-flow::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+        .frameless-flow::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .frameless-flow::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .section-block {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 23px;
+            font-weight: 900;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 4px;
+            margin-bottom: 2px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+            font-size: 22px;
+        }
+
+        .section-title.title-red {
+            color: var(--red-alert);
+            border-bottom-color: #fee2e2;
+        }
+
+        .section-title.title-red i {
+            color: var(--red-alert);
+        }
+
+        .card-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-left: 6px;
+        }
+
+        .card-list li {
+            font-size: 21px;
+            line-height: 1.45;
+            color: var(--text-dark);
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .card-list li::before {
+            content: "•";
+            color: var(--primary);
+            font-size: 28px;
+            position: absolute;
+            left: 4px;
+            top: -6px;
+        }
+
+        .red-list li::before {
+            color: var(--red-alert);
+        }
+
+        /* Alert Box - Placed inside flow stream so it naturally follows section blocks without overlapping */
+        .alert-box {
+            background: var(--red-bg);
+            border-left: 8px solid var(--red-alert);
+            border-radius: 12px;
+            padding: 12px 20px;
+            color: #991b1b;
+            font-weight: 800;
+            font-size: 20px;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 8px;
+            margin-bottom: 4px;
+            flex-shrink: 0;
+        }
+
+        .alert-box i {
+            font-size: 26px;
+            color: var(--red-alert);
+        }
+
+        /* Two Column Layout - Frameless Columns with Natural Flow */
+        .frameless-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .column-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 14px;
+        }
+
+        /* Cover Slide Styling - NO BORDER, NO BOX FRAME, FULL HEIGHT DISTRIBUTION */
+        .cover-container {
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 10px 0;
+            background: transparent;
+        }
+
+        .cover-icon {
+            font-size: 90px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .cover-title {
+            font-size: 54px;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+        }
+
+        .cover-subtitle {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        .cover-tag {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 14px 36px;
+            border-radius: 40px;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cover-objectives {
+            text-align: left;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .cover-objectives h3 {
+            color: var(--primary-dark);
+            font-size: 25px;
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+
+        .cover-objectives ul li {
+            font-size: 22px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        /* Transition Slide Styling - FULL HEIGHT DISTRIBUTION */
+        .transition-container {
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 20px 0;
+            background: transparent;
+            color: var(--text-dark);
+        }
+
+        .transition-icon {
+            font-size: 80px;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .transition-title {
+            font-size: 58px;
+            font-weight: 900;
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .transition-desc {
+            font-size: 28px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .transition-points {
+            border-top: 2px solid var(--border-color);
+            padding-top: 24px;
+            text-align: left;
+        }
+
+        .transition-points h4 {
+            font-size: 25px;
+            font-weight: 900;
+            margin-bottom: 18px;
+            color: var(--primary-dark);
+        }
+
+        .transition-points ul li {
+            font-size: 22px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+
+        /* Tables Styling - Full Height Even Distribution & Large Clean Fonts */
+        .table-wrapper {
+            width: 100%;
+            height: 100%;
+            overflow-x: auto;
+            background: white;
+            display: flex;
+            align-items: stretch;
+        }
+
+        table.slide-table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+            font-size: 20px;
+            text-align: left;
+        }
+
+        table.slide-table th {
+            background: var(--primary-dark);
+            color: white;
+            padding: 14px 20px;
+            font-weight: 900;
+            font-size: 22px;
+            vertical-align: middle;
+        }
+
+        table.slide-table td {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border-color);
+            line-height: 1.4;
+            vertical-align: middle;
+        }
+
+        table.slide-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        table.slide-table td:first-child {
+            font-weight: 800;
+            color: var(--primary-dark);
+            font-size: 22px;
+        }
+
+        /* Bottom Controls Bar */
+        .controls-bar {
+            height: 80px;
+            background: #ffffff;
+            border-top: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            flex-shrink: 0;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 12px;
+            font-size: 19px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            background: #f1f5f9;
+            border-color: var(--text-dark);
+        }
+
+        /* Overview Modal Grid */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(15, 23, 42, 0.96);
+            z-index: 9999;
+            padding: 50px;
+            overflow-y: auto;
+        }
+
+        .modal.active { display: block; }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .modal-header h2 {
+            font-size: 30px;
+            font-weight: 900;
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .thumb-card {
+            background: white;
+            border-radius: 16px;
+            padding: 22px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border: 3px solid transparent;
+        }
+
+        .thumb-card:hover {
+            transform: scale(1.04);
+            border-color: var(--primary);
+        }
+
+        .thumb-card.active {
+            border-color: var(--primary);
+            box-shadow: 0 0 25px rgba(28, 126, 214, 0.6);
+        }
+
+        .thumb-num {
+            font-size: 15px;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .thumb-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        @media print {
+            body { overflow: visible; background: white; }
+            .stage { width: 100%; height: auto; max-width: none; max-height: none; box-shadow: none; }
+            .controls-bar, .modal { display: none !important; }
+            .slide-body { page-break-after: always; height: 100vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stage">
+        <!-- Header -->
+        <header class="slide-header">
+            <div class="header-left">
+                <span class="chapter-badge" id="chapter-badge">單元名稱</span>
+                <span class="slide-title-text" id="slide-title">簡報標題</span>
+            </div>
+            <div class="header-right">
+                <span class="slide-counter" id="slide-counter">Slide 01 / 66</span>
+            </div>
+        </header>
+
+        <!-- Slide Body -->
+        <main class="slide-body" id="slide-content">
+            <!-- Dynamic Slide Layout Content -->
+        </main>
+
+        <!-- Controls Bar -->
+        <footer class="controls-bar">
+            <button class="btn btn-outline" id="overview-btn">
+                <i class="fa-solid fa-border-all"></i> 所有 66 頁總覽 (O)
+            </button>
+
+            <div style="display: flex; gap: 20px;">
+                <button class="btn btn-outline" id="prev-btn">
+                    <i class="fa-solid fa-chevron-left"></i> 上一頁 (←)
+                </button>
+                <button class="btn" id="next-btn">
+                    下一頁 (→) <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <button class="btn btn-outline" id="fullscreen-btn">
+                <i class="fa-solid fa-expand"></i> 全螢幕 (F11)
+            </button>
+        </footer>
+    </div>
+
+    <!-- Overview Grid Modal -->
+    <div class="modal" id="overview-modal">
+        <div class="modal-header">
+            <h2><i class="fa-solid fa-layer-group"></i> 全 66 頁簡報快選導覽</h2>
+            <button class="btn btn-outline" id="close-modal-btn" style="color: white; border-color: white;">關閉 (Esc)</button>
+        </div>
+        <div class="modal-grid" id="modal-grid"></div>
+    </div>
+
+    <!-- Slide Database & Script -->
+    <script>
+        const slides = [
+            // Chapter 0: 課程導入
+            {
+                num: 1,
+                chapter: "課程導入",
+                title: "急重症常見藥物實務應用",
+                type: "cover",
+                subtitle: "加護病房 (ICU) 護理人員 1 小時精實培訓課程",
+                audience: "加護病房護理人員 / 新進護理師 / 臨床護理同仁",
+                objectives: [
+                    "掌握 ICU 常見急重症藥物之藥理機轉與精準劑量算式。",
+                    "熟悉常用升降壓劑、強心劑、鎮靜肌鬆劑、急救藥物、抗生素與解毒劑之稀釋泡法。",
+                    "強化給藥途徑選擇 (CVC vs. 周邊)、管路相容性 (Y-site) 與高警訊副作用之護理監測。"
+                ]
+            },
+            {
+                num: 2,
+                chapter: "課程導入",
+                title: "五大主題模組介紹",
+                type: "agenda",
+                modules: [
+                    { num: "單元一", title: "升壓、降壓與強心劑 (Slide 03-18)", desc: "受體作用軸線、敗血性與心因性休克給藥、血壓微調與靜脈炎防護" },
+                    { num: "單元二", title: "鎮靜、止痛與肌肉鬆弛 (Slide 19-36)", desc: "RASS/SAS 鎮靜深度、PRIS 症候群、鴉片類活性代謝物蓄積、TOF 監測與 Hofmann 代謝" },
+                    { num: "單元三", title: "ACLS 常見急救用藥 (Slide 37-46)", desc: "急救藥物快速靜脈推注、D5W 稀釋限制、電解質高警訊保護與高血鉀急救流程" },
+                    { num: "單元四", title: "抗微生物製劑 (Slide 47-58)", desc: "β-lactams 延長滴注、MDR 陰性菌攻防、TDM 血中濃度監測與 Amphotericin B 護理防線" },
+                    { num: "單元五", title: "解毒用藥 (Slide 59-65)", desc: "有機磷、BZD、Opioid、β-blocker 中毒解毒劑與特異性反轉劑 Idarucizumab" },
+                    { num: "總結", title: "急重症用藥安全與 Q&A (Slide 66)", desc: "急重症用藥安全五對原則與護理監測黃金法則" }
+                ]
+            },
+
+            // Chapter 1: 單元一
+            {
+                num: 3,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "單元一：升壓、降壓、強心劑",
+                type: "transition",
+                summary: "升壓劑 (Vasopressors)、降壓劑 (Antihypertensives) 與強心劑 (Inotropes) 的血流動力學調控",
+                points: [
+                    "α1, β1, β2, D1, V1 受體對血管收縮與心肌收縮力之影響。",
+                    "周邊靜脈與中央靜脈導管 (CVC) 之給藥安全與外滲處理。",
+                    "藥物不相容性 (如與 Sodium Bicarbonate 混合致失效)。"
+                ]
+            },
+            {
+                num: 4,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "急重症升壓劑受體與臨床效應比較",
+                type: "table",
+                headers: ["藥物 (Drug)", "α1", "β1", "β2", "D", "V1", "V2", "臨床效應 (Clinical Effect)"],
+                rows: [
+                    ["Norepinephrine", "+++", "+++", "++", "0", "0", "0", "↑ HR, ↑↑↑ MAP"],
+                    ["Vasopressin", "0", "0", "0", "0", "+++", "+++", "↑↑↑ MAP"],
+                    ["Epinephrine<br>(0.01~0.05 mcg/kg/min)", "++", "++++", "+++", "0", "0", "0", "↑ HR, ↑ MAP, ↑↑ CO"],
+                    ["Epinephrine<br>(0.05~3 mcg/kg/min)", "++++", "+++", "+", "0", "0", "0", "↑↑ HR, ↑↑ MAP, ↑↑ CO"],
+                    ["Dopamine<br>(1~3 mcg/kg/min)", "0", "+", "0", "++++", "0", "0", "↑ renal blood flow"],
+                    ["Dopamine<br>(3~10 mcg/kg/min)", "+", "++++", "+", "++++", "0", "0", "↑ HR, ↑ MAP, ↑ CO"],
+                    ["Dopamine<br>(10~20 mcg/kg/min)", "+++", "++++", "+", "0", "0", "0", "↑↑ HR, ↑ MAP, ↑ CO"]
+                ]
+            },
+            {
+                num: 5,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "升壓劑——Norepinephrine (Levophed)",
+                type: "detail-flow",
+                mechanism: ["刺激 α1 受體：強力的血管收縮作用，提升周邊血管阻力與 MAP。", "刺激 β 受體：增強心肌收縮力並擴張冠狀動脈。"],
+                indications: ["休克 (敗血性/心因性)：0.01~3 mcg/kg/min IVF (心因性 0.05~0.4 mcg/kg/min)", "急性嚴重低血壓：8~12 mcg/min IVF", "心跳停止後照護：0.1~0.5 mcg/kg/min IVF"],
+                dilutions: ["濃泡：16 mg (4 vials) in 250 mL D5W (濃度 64 mcg/mL)", "稀泡：8 mg (4 vials) in 250 mL D5W (濃度 32 mcg/mL)"],
+                contraindications: ["低血容性休克未補足水分前禁用；嚴重兒茶酚胺過敏者禁用。"],
+                precautions: ["開始給藥前必須先補足低血壓患者的血容積 (Hypovolemia)。", "敗血性休克：NE 已達中低劑量 (0.25~0.5 mcg/kg/min) 仍未達 MAP > 65 mmHg，建議加入 Vasopressin 聯合輸注。", "途徑：初期可短暫使用周邊靜脈 (<6 小時)，應儘早更換為中央靜脈導管 (CVC)。", "外滲處理：局部熱敷，觀察末梢皮膚顏色，避免組織壞死。"],
+                alert: "外滲可能引發肢體末梢組織缺血壞死！應使用中央靜脈導管，外滲請局部熱敷！"
+            },
+            {
+                num: 6,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "升壓劑——Vasopressin (Pitressin)",
+                type: "detail-flow",
+                mechanism: ["刺激血管平滑肌 V1 受體：直接收縮血管平滑肌（非兒茶酚胺路徑，酸中毒時仍有效）。", "刺激腎小管 V2 受體：增加水分重吸收，發揮抗利尿作用。"],
+                indications: ["血管舒張性休克 / 敗血性休克：0.01~0.03 U/min IVF (固定流速)", "食道靜脈曲張出血 (EVB)：0.2~0.4 U/min IVF", "尿崩症 (DI)：5~10 U IM or SC BID~TID"],
+                dilutions: ["濃泡：60 U (3 amps) in 100 mL NS or D5W (跑 1~4 mL/hr)", "稀泡：20 U (1 amp) in 100 mL NS or D5W (跑 3~12 mL/hr)"],
+                contraindications: ["慢性腎病伴隨血管收縮異常、冠狀動脈疾病嚴重缺血患者慎用。"],
+                precautions: ["必須由中央靜脈導管 (CVC) 給藥，防止外滲致嚴重組織壞死。", "觀察腸道缺血 (Mesenteric ischemia)、心肌缺氧與肢體缺血 (Limb ischemia)。", "停藥後監測水電解質與尿量，停藥後可能出現可逆性尿崩症。"],
+                alert: "極易引發末梢與腸缺血！必須經由中央導管給藥，停藥後須監測電解質與尿量！"
+            },
+            {
+                num: 7,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "升壓劑——Epinephrine (Bosmin)",
+                type: "detail-flow",
+                mechanism: ["α1 + β1 + β2 全效腎上腺素受體致效劑。", "低劑量以 β 作用為主（強心與支氣管擴張）；高劑量以 α1 作用為主（血管收縮）。"],
+                indications: ["過敏性休克：0.01 mg/kg IM (大腿外側，最大 0.5 mg/dose)", "敗血性休克：0.05~0.5 mcg/kg/min IVF", "ACLS 心跳停止：1 mg IV/IO push (每 3~5 分鐘)；氣管內 2~2.5 mg"],
+                dilutions: ["濃泡：10 mg (10 amps) in 90 mL NS or D5W", "稀泡：1~2 mg in 100 mL NS or D5W"],
+                contraindications: ["出血性休克未控制出血前、窄角型青光眼慎用；嚴禁注射於手指腳趾。"],
+                precautions: ["禁止注射於肢體末端 (手指、腳趾) 或臀部，防末梢缺血壞死。", "注意多種給藥途徑 (IM, IV, IO, INHL, SC)，給藥前務必確認途徑與濃度。", "靜脈給藥劑量過大或誤注可能致血壓驟升、腦出血與心律不整。"],
+                alert: "有多種途徑 (IM/IV/IO/INHL)，過敏性休克首選大腿外側 IM！禁止注射於手指腳趾！"
+            },
+            {
+                num: 8,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "升壓劑——Dopamine",
+                type: "detail-flow",
+                mechanism: ["低劑量 (1~3 mcg/kg/min)：刺激 D1 受體，擴張腎臟與腸系膜血管。", "中劑量 (3~10 mcg/kg/min)：刺激 β1 受體，增加心肌收縮力與心輸出量。", "高劑量 (10~20 mcg/kg/min)：刺激 α1 受體，血管收縮，提升血壓。"],
+                indications: ["心搏過緩 / 心因性休克 / 敗血性休克：2~50 mcg/kg/min IVF"],
+                dilutions: ["800 mg (4 amps) in 250 mL NS or D5W (或袋裝 600 mg/200 mL)"],
+                contraindications: ["嗜鉻細胞瘤 (Pheochromocytoma) 患者禁用；未校正之快速心律不整禁用。"],
+                precautions: ["嚴禁與 Sodium Bicarbonate 等鹼性溶液混合，會使藥物失效！", "給藥前須先處理低血容、酸中毒與低血氧。儘早更換為 CVC。"],
+                alert: "不可與 Sodium Bicarbonate 鹼性溶液混合！會使藥物分解失效！"
+            },
+            {
+                num: 9,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "急重症降壓劑起效與臨床情境比較",
+                type: "table",
+                headers: ["藥物 (Drug)", "機轉 (Mechanism)", "起效 / 持續時間", "優點", "缺點 / 警告", "常用臨床情境"],
+                rows: [
+                    ["Nicardipine", "Dihydropyridine CCB", "2~5 min / 1~4 hr", "降壓平穩，不影響心肌收縮", "反射性心搏過速；重度 AS 禁用", "腦出血 (ICH)、高血壓急症"],
+                    ["Labetalol", "α1 + β blocker (1:7)", "5 min / 16~18 hr", "同時降低心率與血壓", "禁用於心衰竭、嚴心動過緩、氣喘", "高血壓急症、ICH、子癲前症"],
+                    ["Esmolol", "超短效選擇性 β1 blocker", "2~10 min / 10~30 min", "超短效，可快速微調", "禁用於心衰竭、氣喘、嚴心動過緩", "主動脈剝離首選"],
+                    ["Nitroglycerin", "NO donor → 擴張靜脈", "立即起效 / 3~5 min", "降低前負荷，改善冠脈血流", "易耐受；嚴禁與 PDE-5 劑併用", "ACS、急性肺水腫"]
+                ]
+            },
+            {
+                num: 10,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "降壓劑——Nicardipine (Holdipine)",
+                type: "detail-flow",
+                mechanism: ["Dihydropyridine 類鈣通道阻斷劑 (CCB)，選擇性作用於血管平滑肌，舒張小動脈並降低外圍阻力。"],
+                indications: ["高血壓急症 / 腦出血 (ICH)：5~15 mg/hr IVF"],
+                dilutions: ["濃泡 (1:1)：10 mg in 10 mL NS or D5W", "稀泡 (1:4)：10 mg in 40 mL NS or D5W (0.2 mg/mL)"],
+                contraindications: ["嚴重主動脈瓣狹窄 (Aortic stenosis) 患者絕對禁用！"],
+                precautions: ["IV 輸注極易致靜脈炎，應經中央靜脈或大型周邊血管給藥，每 12 小時更換注射部位。", "從 IV 轉換為口服給藥時，建議在停止輸注前 1 小時服用第一劑口服藥。", "與 Cyclosporine 或 Tacrolimus 併用會增加免疫抑制劑血中濃度。"],
+                alert: "易致靜脈炎！每 12 小時須更換注射部位！重度主動脈瓣狹窄禁用！"
+            },
+            {
+                num: 11,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "降壓劑——Labetalol (Trandate, Chenday)",
+                type: "detail-flow",
+                mechanism: [
+                    "拮抗 α1 受體：減少周邊血管阻力。",
+                    "拮抗 β 受體：預防反射性心動過速（靜脈 IV 給藥時，α1:β 拮抗比例約為 1:7）。"
+                ],
+                indications: [
+                    "急性高血壓：10~20 mg IV ST, 0.5~2 mg/min IVF",
+                    "急性主動脈剝離：20 mg IV ST, 每 10~20 分鐘 IV 20~80 mg",
+                    "子癇前症 (Pre-eclampsia)：20 mg IV ST, 0.5~2 mg/min IVF"
+                ],
+                dilutions: [
+                    "規格：25 mg/5 mL/amp",
+                    "稀釋泡法：250 mg (10 amps) in 200 mL NS or D5W，或 100 mg (4 amps) in 80 mL NS or D5W"
+                ],
+                contraindications: [
+                    "氣喘或阻塞性呼吸道疾病 (COPD)、心因性休克、嚴重心搏過緩 (Bradycardia)、大於一度之房室傳導阻滯 (AV block) 禁用。"
+                ],
+                precautions: [
+                    "IV 給藥後易發生姿態性低血壓 (Orthostatic hypotension)，給藥期間及給藥後 3 小時內應保持平躺！",
+                    "不可突然停藥！特別是缺血性心臟病患者，否則可能引發心絞痛加劇或心肌梗塞。",
+                    "可能遮蔽低血糖警示症狀 (如心悸、顫抖)，僅剩出汗不受影響。",
+                    "Labetalol 會穿過胎盤，使用時應密切監測胎兒生長情形。"
+                ],
+                alert: "IV 給藥後易發生姿態性低血壓！給藥後 3 小時內務必保持平躺！不可突然停藥！"
+            },
+            {
+                num: 12,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "降壓劑——Esmolol (Brevibloc)",
+                type: "detail-flow",
+                mechanism: [
+                    "超短效型、心臟選擇性 β1 受體阻斷劑。",
+                    "高劑量下也會抑制位於支氣管和血管平滑肌上的 β2 受體。"
+                ],
+                indications: [
+                    "上心室心搏過速 (SVT)：500 mcg/kg IV ST, 50~300 mcg/kg/min IVF",
+                    "術中/術後心搏過速/高血壓：1 mg/kg IV ST, 150 mcg/kg/min IVF",
+                    "心房顫動/心房撲動 (Af/AF)：500 mcg/kg IV ST, 50~300 mcg/kg/min IVF",
+                    "急性主動脈剝離：500 mcg/kg IV ST, 25~50 mcg/kg/min IVF",
+                    "甲狀腺風暴 (Thyroid storm)：250~500 mcg/kg IV ST, 50~100 mcg/kg/min IVF",
+                    "急性高血壓：250~500 mcg/kg IV ST, 25~50 mcg/kg/min IVF"
+                ],
+                dilutions: [
+                    "規格：100 mg/10 mL/vial (原液靜脈注射或加入 NS/D5W 稀釋)"
+                ],
+                contraindications: [
+                    "心因性休克、失代償性心衰竭、二度或三度房室傳導阻滯 (AV block)、病竇症候群、肺高壓。"
+                ],
+                precautions: [
+                    "活性代謝物經腎臟排除，腎功能受損者須留意高血鉀！",
+                    "嗜鉻細胞瘤患者必須在給予 α-blocker 之後才能給予 β-blocker。",
+                    "控制心搏過速時，超過 200 mcg/kg/min 效益有限且副作用增加；高劑量下可能誘發支氣管痙攣。",
+                    "可能遮蔽低血糖警示症狀 (如心悸、顫抖)，僅剩出汗不受影響。",
+                    "欲轉換至其他抗心律不整藥物時，在給予替代藥物首劑後的 30 分鐘，應將 Esmolol 減速 50%。"
+                ],
+                alert: "活性代謝物經腎排除，腎功能受損防高血鉀！轉藥時給替代藥首劑 30 分鐘應減速 50%！"
+            },
+            {
+                num: 13,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "降壓劑——Nitroglycerin (NTG)",
+                type: "detail-flow",
+                mechanism: ["一氧化氮 (NO) 供體，增加細胞內 cGMP 濃度，舒張靜脈血管平滑肌，降低前負荷 (Preload)。"],
+                indications: ["急性冠心症 (ACS) / 急性心衰竭 / 高血壓急症：5~200 mcg/min IVF"],
+                dilutions: ["預泡瓶 50 mg/250 mL D5W，或 50 mg in 150 mL NS/D5W"],
+                contraindications: ["右心室梗塞、嚴重低血壓 (SBP < 90 mmHg)、肥厚性阻塞型心肌病變 (HOCM)；嚴禁併用 PDE-5 劑。"],
+                precautions: ["會被 PVC 材質吸附致藥量流失，必須搭配專用非 PVC (Polyolefin/Glass) 輸注套管與玻璃瓶！", "連續輸注 24~48 小時易產生耐受性，建議每天保留 10~12 小時的 Nitrate-free interval。", "嚴禁與 PDE-5 抑制劑 (Sildenafil / Tadalafil) 併用，會引發致命性低血壓與休克！"],
+                alert: "會被 PVC 管路吸附！須用專用非 PVC 管路與玻璃瓶！嚴禁與 PDE-5 抑制劑併用！"
+            },
+            {
+                num: 14,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "強心劑——Dobutamine (Gendobu)",
+                type: "detail-flow",
+                mechanism: ["β1 受體致效劑，強效增加心肌收縮力與心輸出量。"],
+                indications: ["急性心衰竭 / 心因性休克：2~20 mcg/kg/min continuous IVF"],
+                dilutions: ["250 mg in 250 mL D5W or NS (濃度 1 mg/mL)"],
+                contraindications: ["肥厚性阻塞型心肌病變 (IHSS) 禁用；亞硝酸鹽過敏者慎用。"],
+                precautions: ["肥胖患者 (BMI ≥ 30) 須以理想體重 (IBW) 計算劑量！", "不可與 Sodium Bicarbonate 等鹼性溶液在同一管路混合。"],
+                alert: "肥胖患者須以理想體重 (IBW) 計算劑量！不可與 NaHCO3 鹼性液混合！"
+            },
+            {
+                num: 15,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "強心劑——Milrinone (Primacor)",
+                type: "detail-flow",
+                mechanism: ["PDE-3 抑制劑，增加心肌細胞內 cAMP 提高收縮力，並舒張血管平滑肌 (Inodilator)。"],
+                indications: ["急性心衰竭 / 心臟移植術後：0.125~0.75 mcg/kg/min continuous IVF"],
+                dilutions: ["10 mg/10 mL 原液，以 D5W 或 NS 稀釋至 100~200 mcg/mL"],
+                contraindications: ["嚴重瓣膜性心臟病無適當手術處置前慎用。"],
+                precautions: ["半衰期長 (2-3 小時)，腎功能不全者易蓄積致心律不整與低血壓。", "不建議連續使用超過 48 小時。"],
+                alert: "半衰期長 (2-3h)，腎不全易蓄積致低血壓！不建議連續使用 >48 小時！"
+            },
+            {
+                num: 16,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "強心劑——Isoproterenol (Isuprel)",
+                type: "detail-flow",
+                mechanism: [
+                    "刺激 β1 和 β2 受體：使支氣管、胃腸道與子宮平滑肌鬆弛，增加心率與心肌收縮力，並擴張周邊血管。"
+                ],
+                indications: [
+                    "房室傳導阻滯 (AV block)：1~20 mcg/min IVF; 20~200 mcg IV; 0.2 mg IM or SC",
+                    "心搏過緩 (Bradycardia)：2~10 mcg/min IVF",
+                    "心搏過緩引發的心因性休克：2~20 mcg/min IVF",
+                    "Torsade de pointes (TdP) 急救：2~10 mcg/min IVF",
+                    "傾斜床檢查 (Tilt table test) 誘發劑：1~3 mcg/min IVF",
+                    "麻醉期間支氣管痙攣：10~20 mcg IV，必要時可重複給予"
+                ],
+                dilutions: [
+                    "規格：0.2 mg/1 mL/amp",
+                    "IV bolus: 0.2 mg (1 amp) in 9 mL NS or D5W",
+                    "IV infusion: 2 mg (10 amps) in 240 mL NS or D5W"
+                ],
+                contraindications: [
+                    "冠狀動脈疾病患者應謹慎使用，會增加心肌耗氧量致缺血。",
+                    "禁忌症：心絞痛、原發性心室心律不整、心搏過速、毛地黃中毒引起的心臟傳導阻滯或心搏過速。"
+                ],
+                precautions: [
+                    "用於心搏過緩時，須先使用 Atropine、Dopamine、Epinephrine！",
+                    "可能會短暫導致血糖升高。",
+                    "製劑中含有亞硫酸鹽 (Sulfites)，不可用於亞硫酸鹽過敏者！"
+                ],
+                alert: "顯著增加心肌耗氧量致缺血！含亞硫酸鹽 (Sulfites) 過敏者禁用！心搏過緩先用 Atropine/Dopamine！"
+            },
+            {
+                num: 17,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "強心劑——Levosimendan (SimDAX)",
+                type: "detail-flow",
+                mechanism: [
+                    "增加細胞內鈣離子與心肌 Troponin C 結合之敏感度，增強心臟收縮力。",
+                    "打開血管平滑肌上對 ATP 敏感的鉀離子管道，誘導全身、冠狀動脈及全身靜脈血管擴張，降低前負荷與後負荷。"
+                ],
+                indications: [
+                    "急性失代償性慢性心衰竭：6~12 mcg/kg IV 輸注 10 分鐘 (Loading)，續以 0.05~0.2 mcg/kg/min continuous IVF"
+                ],
+                dilutions: [
+                    "規格：12.5 mg/5 mL/vial (濃縮液)",
+                    "稀釋泡法：12.5 mg (1 vial) in 250 mL D5W (濃度 0.05 mg/mL)"
+                ],
+                contraindications: [
+                    "禁用於重度腎功能不全 (CrCl < 30 mL/min) 及重度肝功能不全病人！",
+                    "禁忌症：嚴重低血壓 (SBP < 100 mmHg, DBP < 60 mmHg)、心跳過快、明顯機械性阻塞（影響心室充填或外流）、或有 Torsades de Pointes 病史。"
+                ],
+                precautions: [
+                    "輸注前必需先改善嚴重低血容 (Hypovolemia)！",
+                    "治療期間及停藥後須持續監測 ECG、血壓、心率、尿流量。一般應持續監測至停藥後至少 3~5 天！",
+                    "不建議與血管擴張劑或其它強心劑併用 (毛地黃除外)，以免增加低血壓風險；若須併用，建議使用較低的起始劑量 (6 mcg/kg)。",
+                    "儲存於 2~8°C 冰箱中，不可凍結；濃縮液顏色變橘屬正常現象，不影響藥效。"
+                ],
+                alert: "重度肝腎不全 (CrCl < 30) 禁用！輸注前先矯正低血容！濃縮液呈橘色屬正常現象！"
+            },
+            {
+                num: 18,
+                chapter: "單元一：升壓、降壓與強心劑",
+                title: "升壓、降壓與強心劑護理監測重點",
+                type: "summary",
+                points: [
+                    "管路分流：升壓劑 (NE, Epi, Dopamine) 盡早使用 CVC 給藥；鹼性液 (NaHCO3) 嚴禁與 Dopamine/Dobutamine 同管路。",
+                    "血容積優先：給予升壓劑前務必確認並矯正血容積不足 (Hypovolemia)。",
+                    "材質相容性：NTG 與 Amiodarone 長時間輸注必須使用非 PVC 容器與專用管路。",
+                    "體重算式基準：Dobutamine、Milrinone 對肥胖患者應使用理想體重 (IBW) 計算劑量。"
+                ]
+            },
+
+            // Chapter 2: 單元二
+            {
+                num: 19,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "單元二：鎮靜、止痛與肌肉鬆弛",
+                type: "transition",
+                summary: "加護病房鎮靜深度、疼痛控制與神經肌肉阻斷劑 (NMBA)",
+                points: [
+                    "Propofol 無菌操作規範與 PRIS 症候群。",
+                    "Dexmedetomidine 的中樞 α2 鎮靜優勢與戒斷預防。",
+                    "鴉片類止痛藥在腎功能不全下的活性代謝物毒性。",
+                    "肌肉鬆弛劑 Hofmann degradation 代謝與 TOF (Train-of-Four) 神經刺激監測。"
+                ]
+            },
+            {
+                num: 20,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "ICU 常用鎮靜劑特性比較",
+                type: "table",
+                headers: ["藥名 (Drug)", "機轉 (Mechanism)", "臨床優點", "缺點 / 警告", "常用情境"],
+                rows: [
+                    ["Propofol (Fresofol)", "GABA_A agonist + NMDA 阻斷", "起效極快、容易微調鎮靜深度", "低血壓、呼吸抑制、PRIS 症候群", "ICU 呼吸器短期鎮靜、快速插管"],
+                    ["Dexmedetomidine", "中樞 α2 agonist", "不抑制呼吸、可與患者互動", "心搏過慢 (Bradycardia)、低血壓", "輕中度鎮靜、拔管前過渡"],
+                    ["Midazolam (Midatin)", "GABA_A agonist", "起效快、具順向失憶效果", "長用易蓄積致譫妄、代謝物經腎排除", "短期鎮靜、癲癇重積狀態"],
+                    ["Lorazepam (Ativan)", "GABA_A agonist", "作用穩定、無活性代謝物", "恢復慢、高劑量易致 PG 酸中毒", "長期鎮靜、酒精戒斷"]
+                ]
+            },
+            {
+                num: 21,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "鎮靜劑——Propofol (Fresofol)",
+                type: "detail-flow",
+                mechanism: ["刺激 GABA_A 受體並阻斷 NMDA 受體，抑制中樞神經系統。"],
+                indications: ["ICU 呼吸器病患鎮靜：5~80 mcg/kg/min continuous IVF", "頑固性癲癇重積狀態：30~60 mcg/kg/min IVF"],
+                dilutions: ["原液 200 mg/20 mL，或以 D5W 稀釋 (濃度不可低於 2 mg/mL)"],
+                contraindications: ["對雞蛋、蛋製品、大豆或大豆過敏者禁用。"],
+                precautions: ["Propofol 為脂質乳劑，極易滋生細菌。12 小時後未用完藥液與管路必須全部丟棄！", "防範 PRIS 症候群 (Propofol Infusion Syndrome)：長時間 (>48 小時) 大劑量 (≥4 mg/kg/hr) 輸注高風險，表現為代謝性酸中毒、高血鉀、橫紋肌溶解、心腎衰竭。"],
+                alert: "脂質乳劑易滋生細菌！12 小時後藥液與管路必須丟棄！警惕 PRIS 症候群！"
+            },
+            {
+                num: 22,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "鎮靜劑——Dexmedetomidine (Precedex)",
+                type: "detail-flow",
+                mechanism: ["選擇性中樞 α2 受體致效劑，作用於藍斑核 (Locus coeruleus)。"],
+                indications: ["ICU 呼吸器與非插管病患鎮靜：0.2~1.5 mcg/kg/hr continuous IVF"],
+                dilutions: ["200 mcg (1 amp) in 48 mL NS (濃度 4 mcg/mL)"],
+                contraindications: ["二度或三度房室傳導阻滯 (AV block) 禁用。"],
+                precautions: ["不安靜但可喚醒（患者可受呼喚並進行互動），且無顯著呼吸抑制。", "主要副作用：心搏過慢 (Bradycardia) 與低血壓。", "連續輸注 >24 小時易產生耐受性；若突然停藥可能在 48 小時內引發戒斷反應（高血壓、心搏過速、躁動），須逐漸減量停藥。"],
+                alert: "不抑制呼吸、可喚醒互動！連續使用 >24 小時易耐受，突停防戒斷反應！"
+            },
+            {
+                num: 23,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "鎮靜劑——Midazolam (Midatin)",
+                type: "detail-flow",
+                mechanism: ["短效性 Benzodiazepine，刺激 GABA_A 受體，增加氯離子進入細胞，抑制中樞神經。脂溶性高，經肝臟 CYP3A4 代謝。"],
+                indications: ["ICU 呼吸器病患鎮靜：1~8 mg/hr continuous IVF", "頑固性癲癇重積狀態 (Status epilepticus)：0.15~0.2 mg/kg loading, then 0.05~0.4 mg/kg/hr"],
+                dilutions: ["5 mg/5 mL 或 15 mg/3 mL Amp，使用 NS 或 D5W 稀釋"],
+                contraindications: ["重症肌無力、急性窄角型青光眼禁用。"],
+                precautions: ["活性代謝物 1-hydroxymidazolam 經腎臟排除。在急性腎損傷 (AKI) 患者體內易顯著蓄積，導致鎮靜時間大幅延長！", "長期連續滴注 (>48-72 小時) 易產生蓄積與生理依賴，顯著增加 ICU 譫妄 (Delirium) 發病率。", "突停易引發戒斷症狀（躁動、高血壓、心搏過速、癲癇）。"],
+                alert: "腎衰竭活性代謝物易蓄積致鎮靜時間延長！長期滴注顯著增加譫妄風險！"
+            },
+            {
+                num: 24,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "鎮靜劑——Lorazepam (Ativan)",
+                type: "detail-flow",
+                mechanism: ["中效性 Benzodiazepine，刺激 GABA_A 受體。無活性代謝物，主要經肝臟進行 Glucuronidation 中和代謝。"],
+                indications: ["加護病房長期鎮靜：0.5~10 mg/hr continuous IVF", "酒精戒斷症候群 (AWS)：2~5 mg IV Q1-4H PRN"],
+                dilutions: ["2 mg/1 mL Amp，以 NS 或 D5W 稀釋"],
+                contraindications: ["嚴重呼吸衰竭、重症肌無力者禁用。"],
+                precautions: ["Lorazepam 針劑含有 Propylene glycol 溶劑。高劑量連續輸注 (>0.1 mg/kg/hr 超過 48 小時) 易引發高滲透壓性代謝性酸中毒 (Hyperosmolar metabolic acidosis) 及急性腎損傷！", "輸注期間應定期抽 ABG 監測 Anion gap 與 Osmolal gap。", "與 Midazolam 相比恢復時間較長且較不可預測。"],
+                alert: "針劑含 Propylene Glycol！高劑量連續輸注留意高滲透壓性酸中毒與腎毒性！"
+            },
+            {
+                num: 25,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "止痛藥——Fentanyl",
+                type: "detail-flow",
+                mechanism: ["合成強效中樞 μ-opioid 受體致效劑，無組織胺 (Histamine) 釋放特性，血流動力學較穩定。"],
+                indications: ["ICU 鎮痛與鎮靜輔助：50~300 mcg/hr or 0.7~10 mcg/kg/hr IVF", "PCA 自我控制止痛：5~20 mcg/dose, lock interval 4~8 mins"],
+                dilutions: ["1 mg (2 amps) in 30 mL NS or D5W"],
+                contraindications: ["重度肌無力症、未處置之嚴重呼吸抑制禁用。"],
+                precautions: ["高首渡效應，Child-Pugh C 級患者靜脈起始劑量應減半。", "與 SSRIs, SNRIs, MAOIs 併用時，血清素症候群 (Serotonin Syndrome) 風險增高。", "高齡患者敏感度約為年輕者 2 倍，增加譫妄與跌倒風險。快速推注可能引發胸壁僵直。"],
+                alert: "無組織胺釋放！Child-Pugh C 級劑量減半！高齡者增加譫妄/跌倒風險！"
+            },
+            {
+                num: 26,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "止痛藥——Morphine (嗎啡)",
+                type: "detail-flow",
+                mechanism: ["天然鴉片中樞 μ-opioid 受體致效劑。具鎮靜、止痛與擴張靜脈效果，降低心臟前負荷。"],
+                indications: ["嚴重疼痛 / ACS 心肌梗塞胸痛：2~5 mg IV Q3-4H PRN", "急性肺水腫：2~4 mg IV push"],
+                dilutions: ["10 mg/1 mL Amp，以 NS 稀釋至 1 mg/mL 緩慢推注"],
+                contraindications: ["CrCl < 30 mL/min 患者應避免使用！嚴重呼吸抑制、氣喘重積禁用。"],
+                precautions: ["活性代謝物毒性：Morphine-6-glucuronide (M6G, 強效止痛與呼吸抑制) 與 Morphine-3-glucuronide (M3G, 神經毒性/肌陣攣) 經腎排泄。腎衰竭時會嚴重蓄積致致命性呼吸抑制與昏迷！", "組織胺釋放：易引起血管擴張、低血壓、皮膚發紅與搔癢。"],
+                alert: "CrCl < 30 mL/min 避免使用！活性代謝物 M6G 在腎衰竭嚴重蓄積致呼吸抑制！"
+            },
+            {
+                num: 27,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "止痛藥——Tramadol (Tramtor)",
+                type: "detail-flow",
+                mechanism: ["雙重止痛機轉：弱 μ-opioid 受體致效劑 + 抑制 Norepinephrine 與 Serotonin 中樞重吸收。"],
+                indications: ["中至重度疼痛：50~100 mg IV/IM Q4-6H (每日最大劑量 400 mg)"],
+                dilutions: ["100 mg/2 mL Amp，以 NS 或 D5W 稀釋後滴注 20-30 分鐘"],
+                contraindications: ["未控制之癲癇患者禁用；嚴禁與 MAOIs 併用！"],
+                precautions: ["癲癇風險：總日劑量超過 400 mg/day (或腎衰竭未減量) 會顯著降低發作閾值，引發癲癇發作！", "血清素症候群：併用 SSRIs、SNRIs、TCA 時應密切觀察顫抖、發熱與躁動。", "腎功能不全 (CrCl < 30 mL/min) 給藥間隔應延長至 Q12H。"],
+                alert: "每日最大劑量限制 400 mg！超過易誘發癲癇！嚴禁與 MAOIs 併用！"
+            },
+            {
+                num: 28,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "止痛藥——Ketamine (K他命)",
+                type: "detail-flow",
+                mechanism: ["非競爭性 NMDA 受體拮抗劑，阻斷穀氨酸傳導，產生解離性麻醉 (Dissociative anesthesia) 與強效止痛。具擬交感活性。"],
+                indications: ["全身麻醉誘導：1~2 mg/kg IV push", "ICU 鎮靜與止痛輔助：0.2~0.5 mg/kg loading, then 0.05~0.4 mg/kg/hr IVF"],
+                dilution: ["500 mg/10 mL Vial，以 NS 或 D5W 稀釋"],
+                contraindications: ["嚴重高血壓、主動脈剝離、腦血管瘤患者禁用。"],
+                precautions: ["擬交感效應：會提升血壓、心率與顱內壓 (ICP)。", "譫妄與幻覺：約 12% 病患在恢復期出現鮮明幻覺、躁動與譫妄，可預先給予 BZD (Midazolam) 預防。", "靜脈推注速率必須滴注 >60 秒，防止快速推注引發呼吸暫停與血壓驟升！"],
+                alert: "靜脈推注速率須 >60 秒防呼吸暫停！提升血壓心率！可給予 BZD 預防幻覺譫妄！"
+            },
+            {
+                num: 29,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "止痛藥——Nalbuphine (Nullipain)",
+                type: "detail-flow",
+                mechanism: ["鴉片受體混合型 (Mixed agonist-antagonist)：刺激 κ-opioid 受體發揮止痛，同時競爭性拮抗 μ-opioid 受體。"],
+                indications: ["中重度疼痛、鴉片類引發之搔癢症 (Opioid-induced pruritus)：10~20 mg IV/IM/SC Q3-6H"],
+                dilutions: ["10 mg/1 mL Amp 緩慢靜脈推注"],
+                contraindications: ["對 Nalbuphine 過敏者禁用；嚴重頭部創傷慎用。"],
+                precautions: ["天花板效應 (Ceiling effect)：呼吸抑制與止痛效果皆有天花板效應，超過劑量不會進一步增加呼吸抑制。", "鴉片依賴者戒斷：對已產生鴉片依賴性患者使用，會急性拮抗 μ 受體而誘發嚴重戒斷症候群！", "給藥途徑高警訊：長效型劑型僅供肌肉注射 (IM)，絕對禁止靜脈注射 (IV)！"],
+                alert: "具天花板效應！對鴉片依賴者可誘發戒斷反應！長效劑型僅限 IM 嚴禁 IV！"
+            },
+            {
+                num: 30,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "神經肌肉阻斷劑 (NMBA) 作用機制與特性比較",
+                type: "table",
+                headers: ["藥物 (Drug)", "分類 / 機轉", "起效 / 持續時間", "優點", "缺點 / 警告", "常用情境"],
+                rows: [
+                    ["Succinylcholine", "去極化型 (Depolarizing)", "60~90 秒 /<br>3~5 min", "起效最快、<br>作用時間最短", "高血鉀風險、<br>惡性高熱 (MH)", "快速麻醉誘導插管 (RSI)"],
+                    ["Rocuronium", "非去極化型 (Competitive)", "1~2 min /<br>30~60 min", "起效快、<br>具逆轉劑 Sugammadex", "肝膽排泄、<br>需搭配足量鎮靜", "快速插管、<br>ICU 肌鬆"],
+                    ["Cisatracurium", "非去極化型 (Hofmann 代謝)", "3~4 min /<br>40~65 min", "器官非依賴代謝 (Hofmann)，極安全", "起效較慢、<br>不適合緊急 RSI", "ICU 長時間肌鬆 (ARDS) 首選"],
+                    ["Atracurium", "非去極化型 (Hofmann 代謝)", "2~3 min /<br>40~70 min", "器官非依賴代謝", "Laudanosine 較多有癲癇風險", "ICU 長時間肌鬆"]
+                ]
+            },
+            {
+                num: 31,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "肌肉鬆弛劑——Succinylcholine (Relaxin)",
+                type: "detail-flow",
+                mechanism: ["唯一臨床使用的去極化型 NMBA。持續刺激運動終板 ACh 受體致持續去極化，骨骼肌麻痺。"],
+                indications: ["快速麻醉誘導插管 (RSI)：1~1.5 mg/kg IV push"],
+                dilutions: ["溶解後 1~2 mg/mL D5W or NS 稀釋"],
+                contraindications: ["嚴重燒傷、多重創傷、廣泛肌肉失神經支配、惡性高熱家族史者禁用！"],
+                precautions: ["高血鉀風險：嚴重燒傷、多重創傷、廣泛肌肉失神經支配者使用後會引發高血鉀性橫紋肌溶解與心跳停止！", "惡性高熱 (MH)：若發生僵硬與高熱，立即停藥並給予 Dantrolene 解毒！", "藥液呈酸性 (pH 3~4.5)，不可與 Barbiturates 等鹼性溶液混合。"],
+                alert: "去極化肌鬆劑！高血鉀、惡性高熱高風險！惡性高熱發作須給予 Dantrolene！"
+            },
+            {
+                num: 32,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "肌肉鬆弛劑——Rocuronium",
+                type: "detail-flow",
+                mechanism: ["非去極化型 NMBA，競爭性阻斷 ACh 受體，抑制肌肉去極化。"],
+                indications: ["插管 (RSI)：0.6~1.2 mg/kg IV", "ICU continuous IVF：0.6~1 mg/kg loading, then 3~16 mcg/kg/min"],
+                dilutions: ["原液 50 mg/5 mL，或使用 D5W, NS, LR 稀釋 (0.5~5 mg/mL)"],
+                contraindications: ["對 Rocuronium 或 Bromide 過敏者禁用。"],
+                precautions: ["可使用 Sugammadex (Bridion) 進行快速特異性逆轉。", "不具鎮靜與止痛效果！給藥前必須確保患者已處於足夠深度之鎮靜狀態，並有適當呼吸器輔助。", "使用週邊神經刺激器 (PNS) 進行 Train-of-Four (TOF) 監測。酸性藥液不可與鹼性液混合。"],
+                alert: "可用 Sugammadex 特異性逆轉！必須搭配足夠鎮靜！TOF 監測調整劑量！"
+            },
+            {
+                num: 33,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "肌肉鬆弛劑——Cisatracurium (Nimbex)",
+                type: "detail-flow",
+                mechanism: ["非去極化型雙季胺類 NMBA。主要經由體溫與血液 pH 值自發進行 Hofmann degradation (霍夫曼消除) 降解，不依賴肝腎功能。"],
+                indications: ["ARDS 急性呼吸窘迫症候群 / 嚴重過度呼吸：0.1~0.2 mg/kg IV loading, then 1~3 mcg/kg/min continuous IVF"],
+                dilutions: ["10 mg/5 mL Amp，以 D5W 或 NS 稀釋 (不可使用 LR 稀釋)"],
+                contraindications: ["對 Cisatracurium 或 Benzenesulfonate 過敏者禁用。"],
+                precautions: ["器官非依賴代謝：肝功能衰竭或腎功能衰竭患者使用極安全，半衰期不延長。", "給藥限制：嚴禁進行肌肉注射 (IM)！不可與 Ringer's Lactate (LR) 溶液混合稀釋 (會產生沉澱)。", "無組織胺釋放，血流動力學比 Atracurium 更穩定。"],
+                alert: "Hofmann 自發性降解！肝腎衰竭極安全！嚴禁 IM 注射，不可用 LR 稀釋！"
+            },
+            {
+                num: 34,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "肌肉鬆弛劑——Atracurium (Tracrium)",
+                type: "detail-flow",
+                mechanism: ["非去極化型 NMBA。經由 Hofmann degradation 自發性降解與酯類水解 (Ester hydrolysis) 代謝。"],
+                indications: ["ICU 呼吸器輔助肌肉鬆弛：0.4~0.5 mg/kg IV loading, then 4~12 mcg/kg/min IVF"],
+                dilutions: ["25 mg/2.5 mL Amp，以 D5W 或 NS 稀釋"],
+                contraindications: ["對 Atracurium 過敏者禁用。"],
+                precautions: ["Laudanosine 蓄積毒性：Hofmann 降解產物 Laudanosine 具中樞神經刺激性。長期大劑量輸注會在體內累積，有誘發癲癇發作的風險！", "組織胺釋放：快速靜脈推注會引發顯著組織胺釋放，致低血壓、心搏過速與支氣管痙攣。推注時間應 >60 秒。"],
+                alert: "降解產物 Laudanosine 累積有誘發癲癇風險！靜推過快引發組織胺釋放致低血壓！"
+            },
+            {
+                num: 35,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "ICU 鎮靜深度評估與肌肉鬆弛劑 TOF 監測實務",
+                type: "proto",
+                protocols: [
+                    { title: "RASS / SAS 鎮靜深度監測", content: "RASS 目標通常維持在 -1 ~ -2 (輕度鎮靜)。使用肌鬆劑時則需配合深度鎮靜 (RASS -4 ~ -5)，防止清醒窒息。" },
+                    { title: "TOF (Train-of-Four) 週邊神經刺激監測", content: "評估尺神經 (Ulnar nerve) 拇內收肌收縮。目標維持 1~2 次 Twitch (75%-90% 受體阻斷)；拔管前需恢復至 4 次 Twitch 且比值 > 0.9。" }
+                ]
+            },
+            {
+                num: 36,
+                chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
+                title: "鎮靜、止痛與肌鬆藥物安全管理",
+                type: "summary",
+                points: [
+                    "肌鬆劑警示：肌肉鬆弛劑不具備任何鎮靜或止痛效果！未給予鎮靜劑即給肌鬆劑會造成清醒窒息重大事故。",
+                    "PRIS 監測：Propofol 滴注每 12 小時換管，連續使用限 48 小時內，定期抽 ABG 與 CPK/Triglyceride。",
+                    "器官衰竭選擇：腎衰竭患者鎮靜避免高劑量 Midazolam/Morphine；肌鬆劑首選 Cisatracurium。"
+                ]
+            },
+
+            // Chapter 3: 單元三
+            {
+                num: 37,
+                chapter: "單元三：ACLS 常見急救用藥",
+                title: "單元三：ACLS 常見用藥",
+                type: "transition",
+                summary: "高級心臟救命術 (ACLS) 急救用藥、電解質與酸鹼平衡調控",
+                points: [
+                    "Adenosine 半衰期與 Rapid IV push 沖水規範。",
+                    "Amiodarone 溶劑選擇 (D5W) 與血管刺激防護。",
+                    "Atropine 矛盾性心搏過緩與心臟移植無效性。",
+                    "Calcium Salt (CaCl2 vs. Ca Gluconate) 與 Sodium Bicarbonate 之沉澱不相容性。",
+                    "ACLS 高血鉀急救組合流程。"
+                ]
+            },
+            {
+                num: 38,
+                chapter: "單元三：ACLS 常見急救用藥",
+                title: "抗心律不整——Adenosine",
+                type: "detail-flow",
+                mechanism: ["作用於房室結 (AV node) A1 受體，延緩傳導時間並中斷房室結迴路 (Re-entry pathways)，恢復竇性心律。"],
+                indications: ["陣發性室上性心搏過速 (PSVT)：首劑 6 mg Rapid IV push (1~2 秒)，無效 1~2 分鐘後給予 12 mg。"],
+                dilutions: ["原液 6 mg/2 mL 直接快速推注"],
+                contraindications: ["WPW 症候群伴隨心房顫動 (Af) 禁用；二/三度 AV block 禁用。"],
+                precautions: ["半衰期極短 (<10 秒)：必須採用 Rapid IV push (1-2 秒內完成)，給藥後立即以 20 mL NS 快速沖管並抬高肢體！", "若由中央靜脈導管 (CVC) 給藥，初始劑量減半為 3 mg。", "心臟移植患者對本藥極敏感，起始劑量降至 1 mg。"],
+                alert: "半衰期 <10 秒！必須 1-2 秒內 Rapid IV push 並立即沖 20 mL NS！CVC 給藥劑量減半！"
+            },
+            {
+                num: 39,
+                chapter: "單元三：ACLS 常見急救用藥",
+                title: "抗心律不整——Amiodarone (Cordarone)",
+                type: "detail-flow",
+                mechanism: ["Class I~IV 全效抗心律不整藥物（鈉通道、α/β 阻斷、延長動作電位、鈣通道阻斷）。"],
+                indications: ["VF / Pulseless VT (ACLS)：300 mg IV/IO push，持續 VF/VT 追加 150 mg", "Stable VT / Af：150 mg IV over 10m, then 1 mg/min 6h, then 0.5 mg/min 18h"],
+                dilutions: ["只能使用 D5W 稀釋 (900 mg in 250~500 mL D5W)"],
+                contraindications: ["嚴重竇房結失調、二/三度 AV block、心因性休克；碘過敏者禁用。"],
+                precautions: ["稀釋限制：只能使用 D5W 稀釋 (使用 NS 會產生沉澱)。", "濃度 >2 mg/mL 須經 CVC 給藥。輸注 >2 小時藥液會吸附 PVC，必須使用非 PVC 容器 (玻璃瓶/Polyolefin) 與專用套管。", "靜脈給藥過快易引發嚴重低血壓；留意肺纖維化與甲狀腺毒性。"],
+                alert: "只能用 D5W 稀釋！輸注 >2 小時須用非 PVC 容器/玻璃瓶！濃度 >2 mg/mL 行 CVC！"
+            },
+            {
+                num: 40,
+                chapter: "單元三：ACLS 常見急救用藥",
+                title: "急救用藥——Atropine",
+                type: "detail-flow",
+                mechanism: ["抗膽鹼藥物 (Anticholinergic)，競爭性阻斷 Muscarinic receptors，提升心率。"],
+                indications: ["症狀性心搏過緩：1 mg IV push (每 3~5 分鐘重複，最大總劑量 3 mg)", "有機磷農藥中毒：1~5 mg IV/IM/IO (每 3~5 分鐘劑量倍增，直到肺部分泌物減少)"],
+                dilutions: ["原液 1 mg/1 mL 快速靜脈推注"],
+                contraindications: ["窄角型青光眼、前列腺肥大性尿滯留慎用。"],
+                precautions: ["靜脈推注必須快速！若推注過慢或給予超低劑量 (<0.5 mg)，會中樞刺激迷走神經反而引發矛盾性心搏過緩！", "心臟移植患者缺乏迷走神經支配，給予 Atropine 通常無效。"],
+                alert: "IV 給藥必須快速推注！緩慢推注會導致矛盾性心搏過緩！心臟移植者無效！"
+            },
+            {
+                num: 41,
+                chapter: "單元三：ACLS 常見急救用藥",
+                title: "急救用藥——Lidocaine",
+                type: "detail-flow",
+                mechanism: ["Class IB 抗心律不整藥物，阻斷鈉離子通道，抑制心室自發性去極化。"],
+                indications: ["VF / Pulseless VT (Amiodarone 替代劑)：1~1.5 mg/kg IV/IO push", "VT 維持滴注：1~4 mg/min continuous IVF", "插管前給藥：1~1.5 mg/kg IV (抑制插管咳嗽與降低 ICP)"],
+                dilutions: ["1000 mg in 50 mL D5W or NS (濃度 20 mg/mL)"],
+                contraindications: ["嚴重 AV block、病竇症候群、局麻藥過敏者禁用。"],
+                precautions: ["毒性反應 (LAST)：早期表現為耳鳴、舌頭麻木、頭暈、金屬味、顫抖，嚴重時引發抽搐。", "充血性心衰竭 (CHF) 或休克患者分佈體積減少，須將 Loading dose 減半。"],
+                alert: "留意局麻藥全身毒性 (LAST: 耳鳴、顫抖、抽搐)！CHF 或休克者 Loading 減半！"
+            },
+            {
+                num: 42,
+                chapter: "單元三：ACLS 常見急救用藥",
+                title: "電解質與抗痙攣——Magnesium Sulfate",
+                type: "detail-flow",
+                mechanism: ["穩定細胞膜，阻斷 Ca2+ 通道，減少乙醯膽鹼釋放，舒張血管與支氣管平滑肌。"],
+                indications: ["Torsades de Pointes (TdP) 多型性心室過速：1~2 g IV in 100 mL D5W over 15 mins", "子癇前症 / 子癇症 (Eclampsia)：4~6 g IV over 15-30m, then 1~2 g/hr IVF", "嚴重氣喘發作：2 g IV over 20 mins"],
+                dilutions: ["靜脈輸注濃度須在 20% 以下 (本院 10% 可不稀釋)"],
+                contraindications: ["嚴重心導阻滯、肌無力症禁用。"],
+                precautions: ["靜脈推注速率不可超過 150 mg/min (以防低血壓與心導阻滯)。CrCl < 30 mL/min 劑量減半。", "鎂中毒徵兆：深層腱反射 (DTR) 消失為鎂中毒早期的第一徵兆！嚴重時引發呼吸抑制。", "解毒劑：床邊須備妥 Calcium Gluconate 以進行拮抗。"],
+                alert: "靜推速率 <150 mg/min！深層腱反射 (DTR) 消失為中毒前兆！解毒劑備 Calcium Gluconate！"
+            },
+            {
+                num: 43,
+                chapter: "單元三：ACLS 常見急救用藥",
+                title: "Calcium Chloride vs. Calcium Gluconate 比較",
+                type: "table",
+                headers: ["項目 (Item)", "Calcium Chloride (氯化鈣 - Vitacal)", "Calcium Gluconate (葡萄糖酸鈣 - Calglon)"],
+                rows: [
+                    ["元素鈣含量", "高 (10% 10 mL 含 273 mg Ca2+)", "相對低 (10% 10 mL 含 93 mg Ca2+)"],
+                    ["血管組織刺激性", "極強 (High osmolarity & irritant)", "較低 (週邊靜脈相對安全)"],
+                    ["給藥途徑限制", "強烈建議由 CVC 或深層大靜脈給藥", "可由周邊靜脈輸注"],
+                    ["肌肉/皮下注射", "嚴禁 SC / IM (致組織壞死崩解)", "嚴禁 SC / IM (致組織壞死)"],
+                    ["急救適應症", "高血鉀心肌保護、低血鈣、CCB 中毒", "高血鉀心肌保護、低血鈣、CCB 中毒"],
+                    ["共通禁忌與沉澱", "毛地黃中毒慎用；嚴禁與 Bicarbonate、Phosphate 或 Ceftriaxone 混用", "毛地黃中毒慎用；嚴禁與 Bicarbonate、Phosphate 或 Ceftriaxone 混用"]
+                ]
+            },
+            {
+                num: 44,
+                chapter: "單元三：ACLS 常見急救用藥",
+                title: "酸鹼調節——Sodium Bicarbonate (NaHCO3)",
+                type: "detail-flow",
+                mechanism: ["解離提供碳酸氫根離子 (HCO3-)，緩衝血液中過剩氫離子，逆轉酸中毒並鹼化尿液。"],
+                indications: ["代謝性酸中毒 / 高血鉀伴心跳停止：50~100 mEq IV push", "顯影劑腎毒性預防：154 mEq/L 滴注"],
+                dilutions: ["原液 16.67 mEq/20 mL Amp，或使用 D5W, NS 稀釋"],
+                contraindications: ["代謝性或呼吸性鹼中毒、低血鈣症慎用。"],
+                precautions: ["沉澱不相容：不可與鈣鹽製劑 (CaCl2 / Ca Gluconate) 混合，會產生白色的碳酸鈣沉澱！", "致失效不相容：不可與 Catecholamines (Levophed, Bosmin, Dopamine) 在同一管路使用，鹼性環境會使兒茶酚胺分解失效！", "外滲會引發嚴重的組織發炎、潰瘍與壞死。"],
+                alert: "不可與鈣鹽混合 (產生沉澱)！不可與兒茶酚胺同管路 (使升壓劑失效)！"
+            },
+            {
+                num: 45,
+                chapter: "單元三：ACLS 常見急救用藥",
+                title: "ACLS 高血鉀急救組合藥物流程",
+                type: "proto",
+                protocols: [
+                    { title: "1. 心肌細胞膜穩定 (Protect Heart)", content: "Calcium Gluconate 1~2 g IV (或 CaCl2 1 g CVC) over 2~5 mins。穩定心肌電位，防止致命性心律不整。" },
+                    { title: "2. 細胞外鉀離子轉移至細胞內 (Shift Potassium Inward)", content: "Insulin RI 10 Units IV + D50W 50 mL (25 g) IV push；Sodium Bicarbonate 50 mEq IV push；Salbutamol 10-20 mg 霧化吸入。" },
+                    { title: "3. 排出體外 (Remove Potassium)", content: "Furosemide (Lasix) IV 排鉀利尿、Kalimate 腸道離子交換、或緊急血液透析 (HD)。" }
+                ]
+            },
+            {
+                num: 46,
+                chapter: "單元三：ACLS 常見急救用藥",
+                title: "ACLS 急救藥物給藥途徑與管路相容性總梳理",
+                type: "summary",
+                points: [
+                    "給藥途徑與沖水規範：Adenosine 採 1~2 秒 Rapid IV push 並立即 20 mL NS 沖水抬高肢體；Atropine 快速推注。",
+                    "D5W 專用：Amiodarone 只能用 D5W 稀釋 (用 NS 會沉澱)。",
+                    "沉澱與失效禁忌：NaHCO3 嚴禁與 Calcium Salt 混合（產生沉澱），嚴禁與 Levophed/Bosmin/Dopamine 同管路（使兒茶酚胺失效）。"
+                ]
+            },
+
+            // Chapter 4: 單元四
+            {
+                num: 47,
+                chapter: "單元四：抗微生物製劑",
+                title: "單元四：抗微生物製劑",
+                type: "transition",
+                summary: "重症抗生素、抗黴菌劑之藥效學 (PK/PD)、延長滴注與護理安全",
+                points: [
+                    "β-lactams 延長滴注 (Extended Infusion) 理論與臨床執行。",
+                    "含 NMTT 基團 Cephalosporins 之出血風險。",
+                    "Carbapenems 降低 Valproic acid 濃度與癲癇風險。",
+                    "Vancomycin, Colistin, Daptomycin, Polymyxin B 高警訊護理與 TDM。",
+                    "Amphotericin B 稀釋限制 (僅限 D5W) 與預防腎毒性輸注反應。"
+                ]
+            },
+            {
+                num: 48,
+                chapter: "單元四：抗微生物製劑",
+                title: "β-lactams 分類與特性",
+                type: "detail-flow",
+                mechanism: ["β-lactams 屬於時間依賴型 (Time-dependent) 抗生素，臨床療效取決於游離藥物濃度超過 MIC 的時間百分比 (%T > MIC)。"],
+                indications: ["Penicillins：包含天然 Penicillin G、抗葡萄球菌 Oxacillin、廣效 Ampicillin/Piperacillin。", "Cephalosporins：第一至五代頭孢菌素，涵蓋革蘭氏陽性至陰性菌。", "Carbapenems：最廣效 β-lactam，重症抗藥性菌株首選。"],
+                dilutions: ["依各藥品說明使用 NS 或 D5W 稀釋"],
+                contraindications: ["對 β-lactams 類抗生素有嚴重過敏休克史者禁用。"],
+                precautions: ["應注意皮膚過敏試驗與青黴素過敏史。", "過敏性休克發生時立即停藥並給予 Epinephrine IM。"],
+                alert: "時間依賴型抗生素！療效取決於維持藥物濃度超過 MIC 之時間！"
+            },
+            {
+                num: 49,
+                chapter: "單元四：抗微生物製劑",
+                title: "含 NMTT 基團 Cephalosporins",
+                type: "detail-flow",
+                mechanism: ["分子結構含有 N-methylthiotetrazole (NMTT) 側鏈基團 (Cefoperazone, Cefotetan, Cefmetazole)。"],
+                indications: ["廣效抗細菌感染、腹腔感染、膽道感染。"],
+                dilutions: ["使用 NS 或 D5W 稀釋輸注"],
+                contraindications: ["嚴重凝血功能障礙未矯正者慎用；給藥期間與停藥 3 天內嚴禁飲酒。"],
+                precautions: ["凝血功能異常與出血風險：NMTT 基團會干擾肝臟 Vitamin K 循環與 Prothrombin 合成，延長 PT/INR，顯著增加出血風險！", "護理處置：長期使用或高出血風險患者應監測凝血功能 (PT/INR)，必要時補充 Vitamin K。", "Disulfiram-like Reaction：給藥期間及停藥 3 天內嚴禁飲酒。"],
+                alert: "含 NMTT 基團可致 PT 延長增加出血風險！給藥期間及停藥 3 天內嚴禁飲酒！"
+            },
+            {
+                num: 50,
+                chapter: "單元四：抗微生物製劑",
+                title: "Carbapenems 比較與注意事項",
+                type: "multi",
+                items: [
+                    { name: "Ertapenem (Invanz)", desc: "對綠膿桿菌 (Pseudomonas) 無效！不可用葡萄糖液 (D5W) 稀釋 (只能用 NS 稀釋)。" },
+                    { name: "Valproic Acid 交互作用", desc: "Carbapenems 會顯著降低 Valproic acid (Depakene) 血中濃度 (降低 60-90%)，增加癲癇重積風險，不建議合併使用！" },
+                    { name: "中樞癲癇風險排序", desc: "Imipenem > Ertapenem > Meropenem。有癲癇病史者建議優先選擇 Meropenem。" }
+                ],
+                alert: "Ertapenem 對綠膿桿菌無效、不可用 D5W 稀釋！Carbapenems 顯著降低 Valproic acid 濃度！"
+            },
+            {
+                num: 51,
+                chapter: "單元四：抗微生物製劑",
+                title: "β-lactams 延長滴注建議時間比較表",
+                type: "table",
+                headers: ["抗生素學名 (Antibiotic)", "建議延長滴注時間 (Recommended Infusion Time)", "臨床重要備註 (Clinical Remarks)"],
+                rows: [
+                    ["Piperacillin / Tazobactam", "4 小時 (4 Hours)", "%T > MIC 時間最大化，重症綠膿桿菌首選"],
+                    ["Ampicillin / Sulbactam<br>(CRAB)", "4 小時 (4 Hours)", "針對多重抗藥性鮑氏不動桿菌 (CRAB) 重症感染"],
+                    ["Meropenem", "3 小時 (3 Hours)", "重症 ESBL / CR 陰性菌感染，維持穩態藥物濃度"],
+                    ["Imipenem / Cilastatin", "3 小時 (3 Hours)", "重症抗藥性陰性菌，需注意中樞癲癇發作風險"],
+                    ["Cefepime", "3~4 小時 (3~4 Hours)", "第四代頭孢菌素，腎功能不全者需依 CrCl 調整劑量"],
+                    ["Ceftaroline", "2 小時 (2 Hours)", "第五代頭孢菌素，涵蓋 MRSA 抗藥性金黃色葡萄球菌"],
+                    ["Ceftazidime / Avibactam", "2~3 小時 (2~3 Hours)", "新型 β-lactamase 抑制劑複合製劑 (KPC / OXA-48)"],
+                    ["Ceftolozane / Tazobactam", "3 小時 (3 Hours)", "難治型多重抗藥性綠膿桿菌 (MDR-PA) 感染首選"],
+                    ["Cefiderocol", "3 小時 (3 Hours)", "新型鐵載體頭孢菌素 (Siderophore cephalosporin)"]
+                ]
+            },
+            {
+                num: 52,
+                chapter: "單元四：抗微生物製劑",
+                title: "糖胜肽類與抗 MDR 藥物",
+                type: "multi",
+                items: [
+                    { name: "Vancomycin", desc: "Loading dose 依實際體重計算；靜脈滴注速率 <10 mg/min (或 >60 分鐘)，預防紅人症 (Red Man Syndrome)。監測 AUC24 (400-600) 或 Trough (10-20)." },
+                    { name: "Teicoplanin", desc: "半衰期長 (100-170h)，須給予完整 Loading dose；可 IM。" },
+                    { name: "Daptomycin", desc: "絕對不可用於肺炎 (被肺部表面張力素 Surfactant 破壞失效)！每週監測 CPK (橫紋肌溶解)。" },
+                    { name: "Colistin (Polymyxin E)", desc: "前驅藥 (Prodrug) 經腎排除 (腎不全需調整劑量)。靜脈與霧化吸入給藥。留意腎毒性與神經毒性。" },
+                    { name: "Polymyxin B", desc: "活性鹽類 (非前驅藥) 經非腎排除，腎不全不需調整劑量！IV 靜脈給藥優於 Colistin，惟嚴禁霧化吸入 (致肺上皮損傷)。留意色素沉澱與腎毒性。" }
+                ],
+                alert: "Vancomycin 滴速 <10 mg/min 防紅人症！Daptomycin 絕對不可用於肺炎！Polymyxin B 腎不全免調劑量、嚴禁吸入！"
+            },
+            {
+                num: 53,
+                chapter: "單元四：抗微生物製劑",
+                title: "其他重要抗生素分類與護理重點",
+                type: "multi",
+                items: [
+                    { name: "Aminoglycosides", desc: "耳毒性與腎毒性。重症肌無力患者禁用。" },
+                    { name: "Linezolid (Zyvox)", desc: "抑菌性。弱 MAOI 作用，避免高酪胺 (Tyramine) 食物 (熟成起司、紅酒) 防高血壓危象；每週監測 CBC。" },
+                    { name: "Fluoroquinolones", desc: "QTc 延長、肌腱斷裂 (併用類固醇風險增)、低血糖。" },
+                    { name: "Metronidazole", desc: "給藥期間及停藥 3 天內絕對禁酒 (Disulfiram-like reaction)。" },
+                    { name: "TMP-SMX (Bactrim)", desc: "限水者稀釋需注意；輸注 60-90 分鐘 (嚴禁推注)。" },
+                    { name: "Fosfomycin", desc: "含鈉量極高 (2 g/vial 含 663 mg Na)，不建議用 NS 稀釋。" }
+                ],
+                alert: "Metronidazole 嚴禁飲酒！Linezolid 避免高酪胺食物！Fosfomycin 含鈉量高不宜用 NS 稀釋！"
+            },
+            {
+                num: 54,
+                chapter: "單元四：抗微生物製劑",
+                title: "抗黴菌劑——Echinocandins (Anidulafungin / Micafungin)",
+                type: "detail-flow",
+                mechanism: ["選擇性抑制真菌細胞壁 β-(1,3)-D-glucan 合成酶，導致細胞壁結構破壞而死。僅供靜脈輸注 (IV)。"],
+                indications: ["侵襲性念珠菌感染 (Invasive candidiasis)、念珠菌血症 (Candidemia)、食道念珠菌感染。"],
+                dilutions: ["Anidulafungin (Eraxis): 200 mg loading, then 100 mg/day (NS or D5W 稀釋)", "Micafungin (Mycamine): 100 mg/day (NS or D5W 稀釋)"],
+                contraindications: ["對 Echinocandins 類過敏者禁用；罕見果糖不耐症者禁用 Anidulafungin (含果糖賦形劑)。"],
+                precautions: ["組織分佈限制：在腦脊髓液 (CSF) 與尿液中的藥物濃度極低，絕對不適用於中樞神經感染 (腦膜炎) 或尿路感染！", "肝功能監測：定期抽查 LFTs (ALT/AST)，留意肝毒性。"],
+                alert: "在 CSF 與尿液中濃度極低！不適用於腦膜炎或尿路感染！"
+            },
+            {
+                num: 55,
+                chapter: "單元四：抗微生物製劑",
+                title: "抗黴菌劑——Amphotericin B (Fungizone / AmBisome)",
+                type: "detail-flow",
+                mechanism: ["結合真菌細胞膜上的 Ergosterol (麥角固醇)，改變膜通透性致細胞內容物滲漏死亡。"],
+                indications: ["嚴重深部真菌感染、隱球菌腦膜炎 (Cryptococcal meningitis)、毛黴菌病 (Mucormycosis)。"],
+                dilutions: ["傳統型 (Fungizone): 0.5~1.5 mg/kg/day", "脂質體型 (AmBisome): 3~5 mg/kg/day (極低腎毒性)"],
+                contraindications: ["對 Amphotericin B 嚴重過敏者禁用。"],
+                precautions: ["稀釋限制：嚴禁使用 NS 或電解質溶液稀釋！與鹽類接觸會立即產生金屬沉澱，僅限使用 D5W 稀釋！", "預防腎毒性：給藥前 30 分鐘靜脈輸注 500~1000 mL NS 水合。", "預防輸注反應：給藥前 30 分鐘給予 Acetaminophen + Diphenhydramine ± Hydrocortisone。"],
+                alert: "嚴禁使用 NS 稀釋（只能用 D5W）！給藥前前置 500-1000 mL NS 水合防腎毒！"
+            },
+            {
+                num: 56,
+                chapter: "單元四：抗微生物製劑",
+                title: "Amphotericin B 護理與預防毒性實務",
+                type: "proto",
+                protocols: [
+                    { title: "1. 稀釋限制高警訊", content: "嚴禁使用 NS 或電解質溶液稀釋！與鹽類接觸會細胞沉澱，僅限使用 D5W 稀釋。" },
+                    { title: "2. 預防腎毒性水合", content: "給藥前 30 分鐘靜脈輸注 500~1000 mL NS 進行水合 (Hydration)。" },
+                    { title: "3. 預防輸注反應", content: "給藥前 30 分鐘預先給予 Acetaminophen 500 mg PO + Diphenhydramine 30 mg IV ± Hydrocortisone 50~100 mg IV。" },
+                    { title: "4. Liposomal 劑型過濾", content: "溶解後須使用隨附之 5 micron 過濾針頭過濾後加入 D5W。" }
+                ],
+                alert: "嚴禁使用 NS 稀釋（只能用 D5W）！給藥前輸注 500-1000 mL NS 水合防腎毒！"
+            },
+            {
+                num: 57,
+                chapter: "單元四：抗微生物製劑",
+                title: "抗黴菌劑——Azoles & 其他",
+                type: "multi",
+                items: [
+                    { name: "Azoles 類交互作用", desc: "強效 CYP450 抑制劑 (增加 Warfarin, Tacrolimus 濃度)。多數致 QTc 延長，惟獨 Isavuconazole 致 QTc 縮短！" },
+                    { name: "Voriconazole (Vfend)", desc: "短暫視覺障礙、幻覺與骨膜炎。針劑含 SBECD 賦形劑，CrCl <50 mL/min 時易蓄積致腎毒，建議改口服。" },
+                    { name: "Flucytosine (5-FC)", desc: "併用 Liposomal Amphotericin B 治療隱球菌腦膜炎；留意骨髓抑制。" },
+                    { name: "Terbinafine", desc: "CYP2D6 抑制劑；慢性或活動性肝病患者禁用。" }
+                ],
+                alert: "Isavuconazole 致 QTc 縮短！Voriconazole 針劑在 CrCl <50 時因 SBECD 易蓄積腎毒！"
+            },
+            {
+                num: 58,
+                chapter: "單元四：抗微生物製劑",
+                title: "抗微生物製劑 TDM 監測與靜脈滴注安全規範",
+                type: "summary",
+                points: [
+                    "TDM 濃度監測：Vancomycin 給藥前 30 分鐘抽 Trough (目標 10-20 mcg/mL) 或 AUC24 (400-600)；Aminoglycosides 監測 Peak/Trough 預防耳腎毒性。",
+                    "溶劑選擇與稀釋禁忌：Amphotericin B 只能用 D5W 稀釋 (用 NS 立即沉澱)；Ertapenem 只能用 NS 稀釋 (用 D5W 會分解)；Fosfomycin 含鈉量高避免用 NS。",
+                    "延長滴注與滴速規範：β-lactams (Pip/Tazo 4h, Meropenem 3h) 延長滴注極大化 %T > MIC；Vancomycin 滴速 <10 mg/min 預防紅人症。",
+                    "途徑限制與毒性防範：Daptomycin 絕對不可用於肺炎 (被 Surfactant 破壞)；Polymyxin B 嚴禁霧化吸入 (致肺上皮損傷)；Metronidazole 與 NMTT 類嚴禁飲酒。"
+                ]
+            },
+
+            // Chapter 5: 單元五
+            {
+                num: 59,
+                chapter: "單元五：解毒用藥",
+                title: "單元五：解毒用藥",
+                type: "transition",
+                summary: "急重症常見中毒解毒劑 (Antidotes) 與新型特異性反轉劑",
+                points: [
+                    "Pralidoxime (PAM) 有機磷中毒復活性與 Atropine 搭配順序。",
+                    "Flumazenil BZD 拮抗之癲癇誘發風險。",
+                    "Naloxone 鴉片類逆轉之半衰期落差與再鎮靜監測。",
+                    "Glucagon 於 β-blocker / CCB 中毒之強心應用。",
+                    "Idarucizumab (Praxbind) 專一性 Dabigatran 反轉。"
+                ]
+            },
+            {
+                num: 60,
+                chapter: "單元五：解毒用藥",
+                title: "解毒劑——Pralidoxime (PAM)",
+                type: "detail-flow",
+                mechanism: ["乙醯膽鹼酯酶 (AChE) 重活化劑。競爭性結合有機磷分子的磷醯基，恢復膽鹼酯酶破壞 ACh 的活性。"],
+                indications: ["有機磷農藥 (Organophosphate) 中毒解毒：30 mg/kg IV loading (over 30m), then 8~10 mg/kg/hr continuous IVF"],
+                dilutions: ["500 mg Amp，以 NS 稀釋成 10~20 mg/mL"],
+                contraindications: ["氨基甲酸鹽 (Carbamate) 農藥中毒不建議使用（易加重毒性）。"],
+                precautions: ["給藥順序：PAM 必須與 Atropine 聯合使用，且應在 Atropine 效果出現 (肺部分泌物減少、乾爽) 後給予！", "輸注速率限制：靜脈推注速率不可超過 200 mg/min，否則會引發血壓驟升與喉痙攣。"],
+                alert: "必須在 Atropine 達乾爽效果後給予！靜脈輸注速率嚴禁 >200 mg/min！"
+            },
+            {
+                num: 61,
+                chapter: "單元五：解毒用藥",
+                title: "解毒劑——Flumazenil (Anexate)",
+                type: "detail-flow",
+                mechanism: [" Benzodiazepine (BZD) 競爭性中樞受體拮抗劑。專一性中和 BZD 類藥物之鎮靜、失憶與呼吸抑制。"],
+                indications: ["BZD 鎮靜過量解毒 / 疑中 BZD 中毒昏迷：0.2 mg IV over 30s，必要時追加 0.3~0.5 mg"],
+                dilutions: ["0.5 mg/5 mL Amp，原液靜脈推注"],
+                contraindications: ["長期服用 BZD 依賴者、併服三環抗憂鬱劑 (TCA) 過量中毒者絕對禁用！"],
+                precautions: ["癲癇發作風險：對長期服 BZD 產生耐受性或併服 TCA 中毒患者給藥，會瞬間誘發致命性癲癇發作！", "半衰期落差：Flumazenil 半衰期僅 45-60 分鐘，短於大多數 BZD。藥效過後患者可能再度陷入昏迷，須密切監測至少 2 小時。"],
+                alert: "長期服 BZD 或併服 TCA 者給藥極易誘發致命癲癇！藥效短於 BZD 需防再發昏迷！"
+            },
+            {
+                num: 62,
+                chapter: "單元五：解毒用藥",
+                title: "解毒劑——Naloxone (納洛酮)",
+                type: "detail-flow",
+                mechanism: ["專一性中樞 μ, κ, δ 鴉片受體競爭性拮抗劑。完全逆轉鴉片類藥物引起的呼吸抑制與鎮靜。"],
+                indications: ["鴉片類藥物過量致呼吸抑制：0.04~2 mg IV/IM/IO (每 2-3 分鐘可重複)"],
+                dilutions: ["0.4 mg/1 mL Amp，原液或以 NS 稀釋"],
+                contraindications: ["對 Naloxone 過敏者禁用。"],
+                precautions: ["半衰期落差：作用時間 (30-90 分鐘) 短於大多數鴉片類 (如 Morphine, Methadone)。藥效消退後患者會再度陷入致命性呼吸抑制，須連續監測至少 2-4 小時！", "急性戒斷症候群：鴉片依賴者給藥會瞬間引發嚴重戒斷（劇烈疼痛、高血壓、嘔吐、肺水腫）。"],
+                alert: "半衰期短於鴉片類！藥效過後防範再發性呼吸抑制！監測至少 2-4 小時！"
+            },
+            {
+                num: 63,
+                chapter: "單元五：解毒用藥",
+                title: "解毒劑——Glucagon (升糖素)",
+                type: "detail-flow",
+                mechanism: ["繞過 β 受體，直接活化心肌細胞上的升糖素受體，增加細胞內 cAMP 濃度，提升心率與心肌收縮力。"],
+                indications: ["Beta-blocker 或 CCB (鈣離子阻斷劑) 中毒過量：5~10 mg IV loading (over 3-5m), then 2~5 mg/hr IVF"],
+                dilutions: ["1 mg Vial (附專用稀釋液)，靜脈輸注"],
+                contraindications: ["嗜鉻細胞瘤 (Pheochromocytoma) 患者禁用 (致大量兒茶酚胺釋放)。"],
+                precautions: ["酒精性低血糖無效：對肝醣耗盡者 (酒精性低血糖、飢餓) 無升血糖效果。", "嚴重噁心嘔吐：高劑量輸注極易引發嚴重噁心嘔吐，昏迷患者須做好防嗆吸處置 (保護氣道)。"],
+                alert: "繞過 β 受體提升心肌 cAMP！為 Beta-blocker / CCB 中毒首選解毒劑！防嗆吸！"
+            },
+            {
+                num: 64,
+                chapter: "單元五：解毒用藥",
+                title: "新型特異性反轉劑——Idarucizumab (Praxbind)",
+                type: "detail-flow",
+                mechanism: ["人源化單克隆抗體片段 (Fab)，專一性結合 Dabigatran (Pradaxa)，親和力比 Thrombin 強 300~350 倍，迅速中和抗凝血作用。"],
+                indications: ["專一性反轉 Dabigatran 抗凝血作用 (緊急手術或大出血)：總劑量 5 g IV (2 vials，每瓶 2.5 g/50 mL)"],
+                dilutions: ["不須稀釋。每瓶 2.5 g 靜脈輸注 5~10 分鐘，兩瓶間隔不超過 15 分鐘。"],
+                contraindications: ["本藥無顯著禁忌症，但僅能拮抗 Dabigatran，無效於 Warfarin, Rivaroxaban 或 Apixaban。"],
+                precautions: ["給藥前須先以 NS 生理食鹽水沖洗給藥管路，避免藥液吸附在管壁上導致藥效降低！", "僅能反轉 Dabigatran，無法反轉 Rivaroxaban, Apixaban 或 Warfarin。"],
+                alert: "專一性反轉 Dabigatran！劑量 5 g IV！使用前須以 NS 沖洗管路防藥液吸附！"
+            },
+            {
+                num: 65,
+                chapter: "單元五：解毒用藥",
+                title: "ICU 解毒劑備藥與給藥時機決策樹",
+                type: "summary",
+                points: [
+                    "有機磷農藥：先給 Atropine 達乾爽後，再給予 PAM (靜注 <200 mg/min)。",
+                    "BZD 中毒：Flumazenil 0.2 mg IV (注意長期服藥者誘發癲癇發作)。",
+                    "鴉片類過量：Naloxone 0.04-2 mg IV (半衰期短於麻醉藥，需持續監測 2 小時以上)。",
+                    "BB/CCB 中毒：Glucagon 2-10 mg IV (提升心肌 cAMP 復甦心臟)。",
+                    "Dabigatran 大出血：Idarucizumab 5 g IV (輸注前先以 NS 沖管防管壁吸附)。"
+                ]
+            },
+
+            // Chapter 6: 課程結尾
+            {
+                num: 66,
+                chapter: "課程結尾",
+                title: "急重症用藥安全五對原則與護理監測黃金法則",
+                type: "conclusion",
+                rules: [
+                    { title: "1. 正確途徑 (Right Route)", detail: "升壓劑、高濃度 Potassium、CaCl2 儘早使用 CVC；Propofol 嚴禁周邊滴注超過 12 小時。" },
+                    { title: "2. 正確溶劑 (Right Diluent)", detail: "Amiodarone & Amphotericin B 僅限 D5W；Ertapenem & Fosfomycin 避免用 D5W / NS 誤配。" },
+                    { title: "3. 正確相容性 (Right Compatibility)", detail: "NaHCO3 嚴禁與鈣鹽（沉澱）及兒茶酚胺（失效）在同一管路滴注。" },
+                    { title: "4. 正確劑量基準 (Right Calculation)", detail: "肥胖患者區分理想體重 (IBW: Dobutamine, Milrinone) 與實際體重 (ABW: Vancomycin, Succinylcholine)。" },
+                    { title: "5. 正確副作用與 TDM 監測 (Right Monitoring)", detail: "鎮靜執行 RASS/SAS，肌鬆監測 TOF (1-2 twitch)，Vancomycin 抽 Trough/AUC。" }
+                ],
+                quote: "急重症護理的核心不僅在於精準執行醫囑給藥，更在於第一時間覺察藥物相容性、劑量調整與高警訊毒性反應，成為守護 ICU 病人生命的堅實防線！"
+            }
+        ];
+
+        let currentIndex = 0;
+
+        // Auto-format English / dosages in parentheses to new line with stylish subtitle look
+        function formatCellText(str) {
+            if (!str) return '';
+            if (str.includes('<br>')) {
+                return str.replace(/<br>\(([^)]+)\)/g, '<br><span style="font-size: 0.85em; font-weight: 500; opacity: 0.88; display: inline-block; margin-top: 4px;">($1)</span>');
+            }
+            return str.replace(/\s\(([^)]+)\)/g, '<br><span style="font-size: 0.85em; font-weight: 500; opacity: 0.88; display: inline-block; margin-top: 4px;">($1)</span>');
+        }
+
+        function renderSlide(index) {
+            if (index < 0) index = 0;
+            if (index >= slides.length) index = slides.length - 1;
+            currentIndex = index;
+
+            const slide = slides[index];
+
+            document.getElementById('chapter-badge').innerText = slide.chapter;
+            document.getElementById('slide-title').innerText = slide.title;
+            document.getElementById('slide-counter').innerText = `Slide ${String(slide.num).padStart(2, '0')} / ${slides.length}`;
+            document.getElementById('overview-btn').innerHTML = `<i class="fa-solid fa-border-all"></i> 所有 ${slides.length} 頁總覽 (O)`;
+
+            const container = document.getElementById('slide-content');
+            let html = '';
+
+            if (slide.type === 'cover') {
+                html = `
+                    <div class="cover-container">
+                        <div>
+                            <i class="fa-solid fa-heart-pulse cover-icon"></i>
+                            <h1 class="cover-title">${slide.title}</h1>
+                            <div class="cover-subtitle">${slide.subtitle}</div>
+                            <div class="cover-tag"><i class="fa-solid fa-user-nurse"></i> ${slide.audience}</div>
+                        </div>
+                        <div class="cover-objectives">
+                            <h3><i class="fa-solid fa-bullseye"></i> 課程培訓三大目標：</h3>
+                            <ul class="card-list" style="display: flex; flex-direction: column; justify-content: space-around; height: 100%;">
+                                ${slide.objectives.map(o => `<li style="margin-bottom: 12px;">${o}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (slide.type === 'agenda') {
+                html = `
+                    <div class="frameless-columns" style="height: 100%;">
+                        <div class="column-block" style="display: flex; flex-direction: column; justify-content: space-around; height: 100%;">
+                            ${slide.modules.slice(0, 3).map(m => `
+                                <div style="padding: 14px 0; border-bottom: 2px dashed var(--primary-light);">
+                                    <div class="section-title" style="font-size: 28px;"><i class="fa-solid fa-folder-open"></i> ${m.num}：${m.title}</div>
+                                    <p style="font-size: 22px; color: var(--text-muted); line-height: 1.5; margin-top: 10px;">${m.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="column-block" style="display: flex; flex-direction: column; justify-content: space-around; height: 100%;">
+                            ${slide.modules.slice(3).map(m => `
+                                <div style="padding: 14px 0; border-bottom: 2px dashed var(--primary-light);">
+                                    <div class="section-title" style="font-size: 28px;"><i class="fa-solid fa-folder-open"></i> ${m.num}：${m.title}</div>
+                                    <p style="font-size: 22px; color: var(--text-muted); line-height: 1.5; margin-top: 10px;">${m.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } else if (slide.type === 'transition') {
+                html = `
+                    <div class="transition-container">
+                        <div>
+                            <i class="fa-solid fa-bookmark transition-icon"></i>
+                            <div class="transition-title">${slide.title}</div>
+                            <div class="transition-desc">${slide.summary}</div>
+                        </div>
+                        <div class="transition-points">
+                            <h4><i class="fa-solid fa-star"></i> 本單元核心學習要點：</h4>
+                            <ul style="list-style-type: square; padding-left: 24px; display: flex; flex-direction: column; gap: 16px;">
+                                ${slide.points.map(p => `<li style="font-size: 24px; line-height: 1.5;">${p}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (slide.type === 'table') {
+                html = `
+                    <div class="table-wrapper">
+                        <table class="slide-table">
+                            <thead>
+                                <tr>${slide.headers.map(h => `<th>${formatCellText(h)}</th>`).join('')}</tr>
+                            </thead>
+                            <tbody>
+                                ${slide.rows.map(r => `<tr>${r.map(c => `<td>${formatCellText(c)}</td>`).join('')}</tr>`).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            } else if (slide.type === 'detail-flow') {
+                html = `
+                    <div class="full-layout">
+                        <div class="frameless-flow" style="justify-content: space-between; height: 100%;">
+                            ${slide.mechanism ? `
+                                <div class="section-block">
+                                    <div class="section-title"><i class="fa-solid fa-gears"></i> 作用機轉</div>
+                                    <ul class="card-list">${slide.mechanism.map(m => `<li>${m}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            ${slide.indications ? `
+                                <div class="section-block">
+                                    <div class="section-title"><i class="fa-solid fa-notes-medical"></i> 適應症與劑量</div>
+                                    <ul class="card-list">${slide.indications.map(i => `<li>${i}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            ${slide.dilutions ? `
+                                <div class="section-block">
+                                    <div class="section-title"><i class="fa-solid fa-vial"></i> 泡法與規格</div>
+                                    <ul class="card-list">${slide.dilutions.map(d => `<li>${d}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            ${slide.contraindications ? `
+                                <div class="section-block">
+                                    <div class="section-title title-red"><i class="fa-solid fa-ban"></i> 特殊考量與禁忌症</div>
+                                    <ul class="card-list red-list">${slide.contraindications.map(c => `<li>${c}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            ${slide.precautions ? `
+                                <div class="section-block">
+                                    <div class="section-title title-red"><i class="fa-solid fa-user-nurse"></i> 護理注意事項</div>
+                                    <ul class="card-list red-list">${slide.precautions.map(p => `<li>${p}</li>`).join('')}</ul>
+                                </div>
+                            ` : ''}
+                            ${slide.alert ? `<div class="alert-box"><i class="fa-solid fa-triangle-exclamation"></i> <div><strong>高警訊提示：</strong> ${slide.alert}</div></div>` : ''}
+                        </div>
+                    </div>
+                `;
+            } else if (slide.type === 'multi') {
+                html = `
+                    <div class="full-layout">
+                        <div class="frameless-flow" style="justify-content: space-around; height: 100%;">
+                            ${slide.items.map(item => `
+                                <div class="section-block" style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10px 0;">
+                                    <div class="section-title" style="font-size: 25px; margin-bottom: 6px;"><i class="fa-solid fa-vial"></i> ${item.name}</div>
+                                    <p style="font-size: 22px; color: var(--text-dark); line-height: 1.5; padding-left: 6px;">${item.desc}</p>
+                                </div>
+                            `).join('')}
+                            ${slide.alert ? `<div class="alert-box"><i class="fa-solid fa-triangle-exclamation"></i> <div><strong>高警訊提示：</strong> ${slide.alert}</div></div>` : ''}
+                        </div>
+                    </div>
+                `;
+            } else if (slide.type === 'proto') {
+                html = `
+                    <div class="full-layout">
+                        <div class="frameless-flow" style="justify-content: space-around; height: 100%;">
+                            ${slide.protocols.map(p => `
+                                <div class="section-block" style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 12px 0;">
+                                    <div class="section-title" style="font-size: 26px; margin-bottom: 8px;"><i class="fa-solid fa-clipboard-check"></i> ${p.title}</div>
+                                    <p style="font-size: 23px; line-height: 1.55; color: var(--text-dark); padding-left: 6px;">${p.content}</p>
+                                </div>
+                            `).join('')}
+                            ${slide.alert ? `<div class="alert-box"><i class="fa-solid fa-triangle-exclamation"></i> <div><strong>高警訊提示：</strong> ${slide.alert}</div></div>` : ''}
+                        </div>
+                    </div>
+                `;
+            } else if (slide.type === 'summary') {
+                html = `
+                    <div class="full-layout">
+                        <div class="frameless-flow" style="display: flex; flex-direction: column; height: 100%;">
+                            <div class="section-title title-red" style="font-size: 30px; margin-bottom: 16px;"><i class="fa-solid fa-shield-halved"></i> 本單元護理監測重點與高警訊提醒</div>
+                            <ul class="card-list red-list" style="display: flex; flex-direction: column; justify-content: space-around; flex: 1; padding: 10px 0;">
+                                ${slide.points.map(pt => `<li style="font-size: 25px; line-height: 1.6; padding: 12px 0 12px 32px;">${pt}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (slide.type === 'conclusion') {
+                html = `
+                    <div class="full-layout">
+                        <div class="frameless-flow" style="justify-content: space-between; height: 100%;">
+                            <div class="section-title" style="font-size: 28px;"><i class="fa-solid fa-award"></i> 急重症護理給藥黃金 5 大防線</div>
+                            <div style="display: flex; flex-direction: column; justify-content: space-around; flex: 1; margin: 10px 0;">
+                                ${slide.rules.map(r => `
+                                    <div style="padding: 6px 0; border-bottom: 1px solid var(--border-color);">
+                                        <div style="font-weight: 900; color: var(--primary-dark); font-size: 22px; margin-bottom: 3px;">${r.title}</div>
+                                        <div style="font-size: 20px; color: var(--text-dark); line-height: 1.45;">${r.detail}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div style="background: var(--primary-light); padding: 16px 20px; border-radius: 14px; text-align: center; font-size: 20px; font-weight: 800; color: var(--primary-dark); margin-bottom: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                💬 「${slide.quote}」
+                            </div>
+                            ${slide.qa ? `
+                                <div style="text-align: center; font-size: 28px; font-weight: 900; color: var(--green-success);">
+                                    <i class="fa-solid fa-comments"></i> ${slide.qa}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+            updateOverviewActive();
+        }
+
+        function populateOverviewModal() {
+            const grid = document.getElementById('modal-grid');
+            grid.innerHTML = '';
+            document.querySelector('.modal-header h2').innerHTML = `<i class="fa-solid fa-layer-group"></i> 全 ${slides.length} 頁簡報快選導覽`;
+            slides.forEach((s, idx) => {
+                const card = document.createElement('div');
+                card.className = `thumb-card ${idx === currentIndex ? 'active' : ''}`;
+                card.onclick = () => {
+                    renderSlide(idx);
+                    closeOverview();
+                };
+                card.innerHTML = `
+                    <div class="thumb-num">Slide ${String(s.num).padStart(2, '0')} (${s.chapter})</div>
+                    <div class="thumb-title">${s.title}</div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function updateOverviewActive() {
+            document.querySelectorAll('.thumb-card').forEach((card, idx) => {
+                if (idx === currentIndex) card.classList.add('active');
+                else card.classList.remove('active');
+            });
+        }
+
+        function openOverview() {
+            populateOverviewModal();
+            document.getElementById('overview-modal').classList.add('active');
+        }
+
+        function closeOverview() {
+            document.getElementById('overview-modal').classList.remove('active');
+        }
+
+        // Navigation Bindings
+        document.getElementById('prev-btn').onclick = () => renderSlide(currentIndex - 1);
+        document.getElementById('next-btn').onclick = () => renderSlide(currentIndex + 1);
+        document.getElementById('overview-btn').onclick = openOverview;
+        document.getElementById('close-modal-btn').onclick = closeOverview;
+
+        document.getElementById('fullscreen-btn').onclick = () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+            }
+        };
+
+        // Keyboard Navigation
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+                renderSlide(currentIndex + 1);
+            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                renderSlide(currentIndex - 1);
+            } else if (e.key === 'o' || e.key === 'O') {
+                const modal = document.getElementById('overview-modal');
+                if (modal.classList.contains('active')) closeOverview();
+                else openOverview();
+            } else if (e.key === 'Escape') {
+                closeOverview();
+            }
+        });
+
+        // Initialize First Slide
+        renderSlide(0);
+    </script>
+</body>
+</html>
