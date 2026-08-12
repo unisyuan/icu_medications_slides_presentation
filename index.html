@@ -644,7 +644,7 @@
                 chapter: "單元一：升壓、降壓與強心劑",
                 title: "急重症升壓劑受體與臨床效應比較",
                 type: "table",
-                headers: ["藥物 (Drug)", "α1", "β1", "β2", "D", "V1", "V2", "臨床效應 (Clinical Effect)"],
+                headers: ["藥物", "α1", "β1", "β2", "D", "V1", "V2", "臨床效應"],
                 rows: [
                     ["Norepinephrine", "+++", "+++", "++", "0", "0", "0", "↑ HR, ↑↑↑ MAP"],
                     ["Vasopressin", "0", "0", "0", "0", "+++", "+++", "↑↑↑ MAP"],
@@ -663,8 +663,8 @@
                 mechanism: ["刺激 α1 受體：強力的血管收縮作用，提升周邊血管阻力與 MAP。", "刺激 β 受體：增強心肌收縮力並擴張冠狀動脈。"],
                 indications: ["休克 (敗血性/心因性)：0.01~3 mcg/kg/min IVF (心因性 0.05~0.4 mcg/kg/min)", "急性嚴重低血壓：8~12 mcg/min IVF", "心跳停止後照護：0.1~0.5 mcg/kg/min IVF"],
                 dilutions: ["濃泡：16 mg (4 vials) in 250 mL D5W (濃度 64 mcg/mL)", "稀泡：8 mg (4 vials) in 250 mL D5W (濃度 32 mcg/mL)"],
-                contraindications: ["低血容性休克未補足水分前禁用；嚴重兒茶酚胺過敏者禁用。"],
-                precautions: ["開始給藥前必須先補足低血壓患者的血容積 (Hypovolemia)。", "敗血性休克：NE 已達中低劑量 (0.25~0.5 mcg/kg/min) 仍未達 MAP > 65 mmHg，建議加入 Vasopressin 聯合輸注。", "途徑：初期可短暫使用周邊靜脈 (<6 小時)，應儘早更換為中央靜脈導管 (CVC)。", "外滲處理：局部熱敷，觀察末梢皮膚顏色，避免組織壞死。"],
+                contraindications: ["低血容性休克未補足血容積 (Hypovolemia) 前禁用；嚴重兒茶酚胺過敏者禁用。"],
+                precautions: ["敗血性休克：NE 已達中低劑量 (0.25~0.5 mcg/kg/min) 仍未達 MAP > 65 mmHg，建議加入 Vasopressin 聯合輸注。", "途徑：初期可短暫使用周邊靜脈 (<6 小時)，應儘早更換為中央靜脈導管 (CVC)。", "外滲處理：局部熱敷，觀察末梢皮膚顏色，避免組織壞死。"],
                 alert: "外滲可能引發肢體末梢組織缺血壞死！應使用中央靜脈導管，外滲請局部熱敷！"
             },
             {
@@ -687,8 +687,8 @@
                 mechanism: ["α1 + β1 + β2 全效腎上腺素受體致效劑。", "低劑量以 β 作用為主（強心與支氣管擴張）；高劑量以 α1 作用為主（血管收縮）。"],
                 indications: ["過敏性休克：0.01 mg/kg IM (大腿外側，最大 0.5 mg/dose)", "敗血性休克：0.05~0.5 mcg/kg/min IVF", "ACLS 心跳停止：1 mg IV/IO push (每 3~5 分鐘)；氣管內 2~2.5 mg"],
                 dilutions: ["濃泡：10 mg (10 amps) in 90 mL NS or D5W", "稀泡：1~2 mg in 100 mL NS or D5W"],
-                contraindications: ["出血性休克未控制出血前、窄角型青光眼慎用；嚴禁注射於手指腳趾。"],
-                precautions: ["禁止注射於肢體末端 (手指、腳趾) 或臀部，防末梢缺血壞死。", "注意多種給藥途徑 (IM, IV, IO, INHL, SC)，給藥前務必確認途徑與濃度。", "靜脈給藥劑量過大或誤注可能致血壓驟升、腦出血與心律不整。"],
+                contraindications: ["出血性休克未控制出血前、窄角型青光眼慎用；嚴禁注射於肢體末端 (手指、腳趾) 或臀部（防末梢缺血壞死）。"],
+                precautions: ["注意多種給藥途徑 (IM, IV, IO, INHL, SC)，給藥前務必確認途徑與濃度。", "靜脈給藥劑量過大或誤注可能致血壓驟升、腦出血與心律不整。"],
                 alert: "有多種途徑 (IM/IV/IO/INHL)，過敏性休克首選大腿外側 IM！禁止注射於手指腳趾！"
             },
             {
@@ -708,7 +708,7 @@
                 chapter: "單元一：升壓、降壓與強心劑",
                 title: "急重症降壓劑起效與臨床情境比較",
                 type: "table",
-                headers: ["藥物 (Drug)", "機轉 (Mechanism)", "起效 / 持續時間", "優點", "缺點 / 警告", "常用臨床情境"],
+                headers: ["藥物", "機轉", "起效 / 持續時間", "優點", "缺點 / 警告", "常用臨床情境"],
                 rows: [
                     ["Nicardipine", "Dihydropyridine CCB", "2~5 min / 1~4 hr", "降壓平穩，不影響心肌收縮", "反射性心搏過速；重度 AS 禁用", "腦出血 (ICH)、高血壓急症"],
                     ["Labetalol", "α1 + β blocker (1:7)", "5 min / 16~18 hr", "同時降低心率與血壓", "禁用於心衰竭、嚴心動過緩、氣喘", "高血壓急症、ICH、子癲前症"],
@@ -797,8 +797,8 @@
                 mechanism: ["一氧化氮 (NO) 供體，增加細胞內 cGMP 濃度，舒張靜脈血管平滑肌，降低前負荷 (Preload)。"],
                 indications: ["急性冠心症 (ACS) / 急性心衰竭 / 高血壓急症：5~200 mcg/min IVF"],
                 dilutions: ["預泡瓶 50 mg/250 mL D5W，或 50 mg in 150 mL NS/D5W"],
-                contraindications: ["右心室梗塞、嚴重低血壓 (SBP < 90 mmHg)、肥厚性阻塞型心肌病變 (HOCM)；嚴禁併用 PDE-5 劑。"],
-                precautions: ["會被 PVC 材質吸附致藥量流失，必須搭配專用非 PVC (Polyolefin/Glass) 輸注套管與玻璃瓶！", "連續輸注 24~48 小時易產生耐受性，建議每天保留 10~12 小時的 Nitrate-free interval。", "嚴禁與 PDE-5 抑制劑 (Sildenafil / Tadalafil) 併用，會引發致命性低血壓與休克！"],
+                contraindications: ["右心室梗塞、嚴重低血壓 (SBP < 90 mmHg)、肥厚性阻塞型心肌病變 (HOCM)；嚴禁併用 PDE-5 抑制劑（致致命低血壓）。"],
+                precautions: ["會被 PVC 材質吸附致藥量流失，必須搭配專用非 PVC (Polyolefin/Glass) 輸注套管與玻璃瓶！", "連續輸注 24~48 小時易產生耐受性，建議每天保留 10~12 小時的 Nitrate-free interval。"],
                 alert: "會被 PVC 管路吸附！須用專用非 PVC 管路與玻璃瓶！嚴禁與 PDE-5 抑制劑併用！"
             },
             {
@@ -917,7 +917,7 @@
                 chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
                 title: "ICU 常用鎮靜劑特性比較",
                 type: "table",
-                headers: ["藥名 (Drug)", "機轉 (Mechanism)", "臨床優點", "缺點 / 警告", "常用情境"],
+                headers: ["藥名", "機轉", "臨床優點", "缺點 / 警告", "常用情境"],
                 rows: [
                     ["Propofol", "GABA_A agonist + NMDA 阻斷", "起效極快、容易微調鎮靜深度", "低血壓、呼吸抑制、PRIS 症候群", "ICU 呼吸器短期鎮靜、快速插管"],
                     ["Dexmedetomidine", "中樞 α2 agonist", "不抑制呼吸、可與患者互動", "心搏過慢 (Bradycardia)、低血壓", "輕中度鎮靜、拔管前過渡"],
@@ -1038,7 +1038,7 @@
                 chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
                 title: "神經肌肉阻斷劑 (NMBA) 作用機制與特性比較",
                 type: "table",
-                headers: ["藥物 (Drug)", "分類 / 機轉", "起效 / 持續時間", "優點", "缺點 / 警告", "常用情境"],
+                headers: ["藥物", "分類 / 機轉", "起效 / 持續時間", "優點", "缺點 / 警告", "常用情境"],
                 rows: [
                     ["Succinylcholine", "去極化型 (Depolarizing)", "60~90 秒 /<br>3~5 min", "起效最快、<br>作用時間最短", "高血鉀風險、<br>惡性高熱 (MH)", "快速麻醉誘導插管 (RSI)"],
                     ["Rocuronium", "非去極化型 (Competitive)", "1~2 min /<br>30~60 min", "起效快、<br>具逆轉劑 Sugammadex", "肝膽排泄、<br>需搭配足量鎮靜", "快速插管、<br>ICU 肌鬆"],
@@ -1054,8 +1054,8 @@
                 mechanism: ["唯一臨床使用的去極化型 NMBA。持續刺激運動終板 ACh 受體致持續去極化，骨骼肌麻痺。"],
                 indications: ["快速麻醉誘導插管 (RSI)：1~1.5 mg/kg IV push"],
                 dilutions: ["溶解後 1~2 mg/mL D5W or NS 稀釋"],
-                contraindications: ["嚴重燒傷、多重創傷、廣泛肌肉失神經支配、惡性高熱家族史者禁用！"],
-                precautions: ["高血鉀風險：嚴重燒傷、多重創傷、廣泛肌肉失神經支配者使用後會引發高血鉀性橫紋肌溶解與心跳停止！", "惡性高熱 (MH)：若發生僵硬與高熱，立即停藥並給予 Dantrolene 解毒！", "藥液呈酸性 (pH 3~4.5)，不可與 Barbiturates 等鹼性溶液混合。"],
+                contraindications: ["嚴重燒傷、多重創傷、廣泛肌肉失神經支配（致命高血鉀風險）及惡性高熱家族史者禁用！"],
+                precautions: ["惡性高熱 (MH)：若發生僵硬與高熱，立即停藥並給予 Dantrolene 解毒！", "藥液呈酸性 (pH 3~4.5)，不可與 Barbiturates 等鹼性溶液混合。"],
                 alert: "去極化肌鬆劑！高血鉀、惡性高熱高風險！惡性高熱發作須給予 Dantrolene！"
             },
             {
@@ -1196,7 +1196,7 @@
                 chapter: "單元三：ACLS 常見急救用藥",
                 title: "Calcium Chloride vs. Calcium Gluconate 比較",
                 type: "table",
-                headers: ["項目 (Item)", "Calcium Chloride (氯化鈣)", "Calcium Gluconate (葡萄糖酸鈣)"],
+                headers: ["項目", "Calcium Chloride (氯化鈣)", "Calcium Gluconate (葡萄糖酸鈣)"],
                 rows: [
                     ["元素鈣含量", "高 (10% 10 mL 含 273 mg Ca2+)", "相對低 (10% 10 mL 含 93 mg Ca2+)"],
                     ["血管組織刺激性", "極強 (High osmolarity & irritant)", "較低 (週邊靜脈相對安全)"],
@@ -1265,7 +1265,7 @@
                 indications: ["Penicillins：包含天然 Penicillin G、抗葡萄球菌 Oxacillin、廣效 Ampicillin/Piperacillin。", "Cephalosporins：第一至五代頭孢菌素，涵蓋革蘭氏陽性至陰性菌。", "Carbapenems：最廣效 β-lactam，重症抗藥性菌株首選。"],
                 dilutions: ["依各藥品說明使用 NS 或 D5W 稀釋"],
                 contraindications: ["對 β-lactams 類抗生素有嚴重過敏休克史者禁用。"],
-                precautions: ["應注意皮膚過敏試驗與青黴素過敏史。", "過敏性休克發生時立即停藥並給予 Epinephrine IM。"],
+                precautions: ["給藥前注意皮膚過敏試驗與過敏史；若發生過敏性休克立即停藥並給予 Epinephrine IM。"],
                 alert: "時間依賴型抗生素！療效取決於維持藥物濃度超過 MIC 之時間！"
             },
             {
@@ -1276,8 +1276,8 @@
                 mechanism: ["分子結構含有 N-methylthiotetrazole (NMTT) 側鏈基團 (Cefoperazone, Cefotetan, Cefmetazole)。"],
                 indications: ["廣效抗細菌感染、腹腔感染、膽道感染。"],
                 dilutions: ["使用 NS 或 D5W 稀釋輸注"],
-                contraindications: ["嚴重凝血功能障礙未矯正者慎用；給藥期間與停藥 3 天內嚴禁飲酒。"],
-                precautions: ["凝血功能異常與出血風險：NMTT 基團會干擾肝臟 Vitamin K 循環與 Prothrombin 合成，延長 PT/INR，顯著增加出血風險！", "護理處置：長期使用或高出血風險患者應監測凝血功能 (PT/INR)，必要時補充 Vitamin K。", "Disulfiram-like Reaction：給藥期間及停藥 3 天內嚴禁飲酒。"],
+                contraindications: ["嚴重凝血功能障礙未矯正者慎用；給藥期間與停藥 3 天內嚴禁飲酒 (Disulfiram-like reaction)。"],
+                precautions: ["凝血功能異常與出血風險：NMTT 基團會干擾肝臟 Vitamin K 循環與 Prothrombin 合成，延長 PT/INR，顯著增加出血風險！", "護理處置：長期使用或高出血風險患者應監測凝血功能 (PT/INR)，必要時補充 Vitamin K。"],
                 alert: "含 NMTT 基團可致 PT 延長增加出血風險！給藥期間及停藥 3 天內嚴禁飲酒！"
             },
             {
@@ -1297,17 +1297,17 @@
                 chapter: "單元四：抗微生物製劑",
                 title: "β-lactams 延長滴注建議時間比較表",
                 type: "table",
-                headers: ["抗生素學名 (Antibiotic)", "建議延長滴注時間 (Recommended Infusion Time)", "臨床重要備註 (Clinical Remarks)"],
+                headers: ["抗生素學名", "建議延長滴注時間", "臨床重要備註"],
                 rows: [
-                    ["Piperacillin / Tazobactam", "4 小時 (4 Hours)", "%T > MIC 時間最大化，重症綠膿桿菌首選"],
-                    ["Ampicillin / Sulbactam<br>(CRAB)", "4 小時 (4 Hours)", "針對多重抗藥性鮑氏不動桿菌 (CRAB) 重症感染"],
-                    ["Meropenem", "3 小時 (3 Hours)", "重症 ESBL / CR 陰性菌感染，維持穩態藥物濃度"],
-                    ["Imipenem / Cilastatin", "3 小時 (3 Hours)", "重症抗藥性陰性菌，需注意中樞癲癇發作風險"],
-                    ["Cefepime", "3~4 小時 (3~4 Hours)", "第四代頭孢菌素，腎功能不全者需依 CrCl 調整劑量"],
-                    ["Ceftaroline", "2 小時 (2 Hours)", "第五代頭孢菌素，涵蓋 MRSA 抗藥性金黃色葡萄球菌"],
-                    ["Ceftazidime / Avibactam", "2~3 小時 (2~3 Hours)", "新型 β-lactamase 抑制劑複合製劑 (KPC / OXA-48)"],
-                    ["Ceftolozane / Tazobactam", "3 小時 (3 Hours)", "難治型多重抗藥性綠膿桿菌 (MDR-PA) 感染首選"],
-                    ["Cefiderocol", "3 小時 (3 Hours)", "新型鐵載體頭孢菌素 (Siderophore cephalosporin)"]
+                    ["Piperacillin / Tazobactam", "4 小時", "%T > MIC 時間最大化，重症綠膿桿菌首選"],
+                    ["Ampicillin / Sulbactam<br>(CRAB)", "4 小時", "針對多重抗藥性鮑氏不動桿菌 (CRAB) 重症感染"],
+                    ["Meropenem", "3 小時", "重症 ESBL / CR 陰性菌感染，維持穩態藥物濃度"],
+                    ["Imipenem / Cilastatin", "3 小時", "重症抗藥性陰性菌，需注意中樞癲癇發作風險"],
+                    ["Cefepime", "3~4 小時", "第四代頭孢菌素，腎功能不全者需依 CrCl 調整劑量"],
+                    ["Ceftaroline", "2 小時", "第五代頭孢菌素，涵蓋 MRSA 抗藥性金黃色葡萄球菌"],
+                    ["Ceftazidime / Avibactam", "2~3 小時", "新型 β-lactamase 抑制劑複合製劑 (KPC / OXA-48)"],
+                    ["Ceftolozane / Tazobactam", "3 小時", "難治型多重抗藥性綠膿桿菌 (MDR-PA) 感染首選"],
+                    ["Cefiderocol", "3 小時", "新型鐵載體頭孢菌素 (Siderophore cephalosporin)"]
                 ]
             },
             {
@@ -1437,8 +1437,8 @@
                 mechanism: [" Benzodiazepine (BZD) 競爭性中樞受體拮抗劑。專一性中和 BZD 類藥物之鎮靜、失憶與呼吸抑制。"],
                 indications: ["BZD 鎮靜過量解毒 / 疑中 BZD 中毒昏迷：0.2 mg IV over 30s，必要時追加 0.3~0.5 mg"],
                 dilutions: ["0.5 mg/5 mL Amp，原液靜脈推注"],
-                contraindications: ["長期服用 BZD 依賴者、併服三環抗憂鬱劑 (TCA) 過量中毒者絕對禁用！"],
-                precautions: ["癲癇發作風險：對長期服 BZD 產生耐受性或併服 TCA 中毒患者給藥，會瞬間誘發致命性癲癇發作！", "半衰期落差：Flumazenil 半衰期僅 45-60 分鐘，短於大多數 BZD。藥效過後患者可能再度陷入昏迷，須密切監測至少 2 小時。"],
+                contraindications: ["長期服用 BZD 依賴者、併服三環抗憂鬱劑 (TCA) 過量中毒者絕對禁用（避免誘發致命性癲癇發作）！"],
+                precautions: ["半衰期落差：Flumazenil 半衰期僅 45-60 分鐘，短於大多數 BZD。藥效過後患者可能再度陷入昏迷，須密切監測至少 2 小時。"],
                 alert: "長期服 BZD 或併服 TCA 者給藥極易誘發致命癲癇！藥效短於 BZD 需防再發昏迷！"
             },
             {
@@ -1474,7 +1474,7 @@
                 indications: ["專一性反轉 Dabigatran 抗凝血作用 (緊急手術或大出血)：總劑量 5 g IV (2 vials，每瓶 2.5 g/50 mL)"],
                 dilutions: ["不須稀釋。每瓶 2.5 g 靜脈輸注 5~10 分鐘，兩瓶間隔不超過 15 分鐘。"],
                 contraindications: ["本藥無顯著禁忌症，但僅能拮抗 Dabigatran，無效於 Warfarin, Rivaroxaban 或 Apixaban。"],
-                precautions: ["給藥前須先以 NS 生理食鹽水沖洗給藥管路，避免藥液吸附在管壁上導致藥效降低！", "僅能反轉 Dabigatran，無法反轉 Rivaroxaban, Apixaban 或 Warfarin。"],
+                precautions: ["給藥前須先以 NS 生理食鹽水沖洗給藥管路，避免藥液吸附在管壁上導致藥效降低！"],
                 alert: "專一性反轉 Dabigatran！劑量 5 g IV！使用前須以 NS 沖洗管路防藥液吸附！"
             },
             {
