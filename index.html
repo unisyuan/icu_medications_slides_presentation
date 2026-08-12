@@ -45,18 +45,26 @@
             align-items: center;
         }
 
-        /* 16:9 Presentation Stage */
+        /* 16:9 Presentation Stage - Strict 16:9 Aspect Ratio */
         .stage {
-            width: 100vw;
-            height: 100vh;
-            max-width: 177.78vh; /* 16:9 Ratio */
-            max-height: 56.25vw;
+            width: min(98vw, 177.78vh);
+            height: min(55.125vw, 95vh);
+            aspect-ratio: 16 / 9;
             background-color: var(--bg-color);
             position: relative;
             display: flex;
             flex-direction: column;
             box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            border-radius: 12px;
             overflow: hidden;
+        }
+
+        :fullscreen .stage, .stage:fullscreen {
+            width: 100vw;
+            height: 100vh;
+            max-width: 177.78vh;
+            max-height: 56.25vw;
+            border-radius: 0;
         }
 
         /* Header Bar - Borderless Clean Line */
@@ -109,25 +117,41 @@
             border-radius: 16px;
         }
 
-        /* Slide Content Main Stage - Expanded Full Space & Vertical Distribution */
+        /* Slide Content Main Stage - Expanded 16:9 Space & Mouse Wheel Scrolling */
         .slide-body {
             flex: 1;
-            padding: 28px 45px;
+            padding: 26px 45px;
             overflow-y: auto;
+            overflow-x: hidden;
             display: flex;
             flex-direction: column;
             background: #ffffff;
-            height: calc(100% - 165px);
             min-height: 0;
+            scroll-behavior: smooth;
         }
 
-        /* Continuous Flow Layout - Single Vertical Flex Stream with Natural Flow (Zero Overlap Guaranteed) */
+        /* Custom Modern Scrollbar for Slide Body (Mouse Wheel & Touch) */
+        .slide-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        .slide-body::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+        .slide-body::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        .slide-body::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Continuous Flow Layout - Supports Smooth Vertical Scrolling */
         .full-layout {
             display: flex;
             flex-direction: column;
             width: 100%;
-            height: 100%;
-            min-height: 0;
+            min-height: 100%;
         }
 
         .frameless-flow {
@@ -135,26 +159,9 @@
             flex-direction: column;
             justify-content: space-between;
             width: 100%;
-            height: 100%;
-            gap: 12px;
-            overflow-y: auto;
-            padding-right: 6px;
-        }
-
-        /* Custom Modern Scrollbar */
-        .frameless-flow::-webkit-scrollbar {
-            width: 6px;
-        }
-        .frameless-flow::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 4px;
-        }
-        .frameless-flow::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        .frameless-flow::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+            min-height: 100%;
+            gap: 14px;
+            padding-right: 4px;
         }
 
         .section-block {
@@ -651,7 +658,7 @@
             {
                 num: 5,
                 chapter: "單元一：升壓、降壓與強心劑",
-                title: "升壓劑——Norepinephrine (Levophed)",
+                title: "升壓劑——Norepinephrine",
                 type: "detail-flow",
                 mechanism: ["刺激 α1 受體：強力的血管收縮作用，提升周邊血管阻力與 MAP。", "刺激 β 受體：增強心肌收縮力並擴張冠狀動脈。"],
                 indications: ["休克 (敗血性/心因性)：0.01~3 mcg/kg/min IVF (心因性 0.05~0.4 mcg/kg/min)", "急性嚴重低血壓：8~12 mcg/min IVF", "心跳停止後照護：0.1~0.5 mcg/kg/min IVF"],
@@ -663,7 +670,7 @@
             {
                 num: 6,
                 chapter: "單元一：升壓、降壓與強心劑",
-                title: "升壓劑——Vasopressin (Pitressin)",
+                title: "升壓劑——Vasopressin",
                 type: "detail-flow",
                 mechanism: ["刺激血管平滑肌 V1 受體：直接收縮血管平滑肌（非兒茶酚胺路徑，酸中毒時仍有效）。", "刺激腎小管 V2 受體：增加水分重吸收，發揮抗利尿作用。"],
                 indications: ["血管舒張性休克 / 敗血性休克：0.01~0.03 U/min IVF (固定流速)", "食道靜脈曲張出血 (EVB)：0.2~0.4 U/min IVF", "尿崩症 (DI)：5~10 U IM or SC BID~TID"],
@@ -675,7 +682,7 @@
             {
                 num: 7,
                 chapter: "單元一：升壓、降壓與強心劑",
-                title: "升壓劑——Epinephrine (Bosmin)",
+                title: "升壓劑——Epinephrine",
                 type: "detail-flow",
                 mechanism: ["α1 + β1 + β2 全效腎上腺素受體致效劑。", "低劑量以 β 作用為主（強心與支氣管擴張）；高劑量以 α1 作用為主（血管收縮）。"],
                 indications: ["過敏性休克：0.01 mg/kg IM (大腿外側，最大 0.5 mg/dose)", "敗血性休克：0.05~0.5 mcg/kg/min IVF", "ACLS 心跳停止：1 mg IV/IO push (每 3~5 分鐘)；氣管內 2~2.5 mg"],
@@ -712,7 +719,7 @@
             {
                 num: 10,
                 chapter: "單元一：升壓、降壓與強心劑",
-                title: "降壓劑——Nicardipine (Holdipine)",
+                title: "降壓劑——Nicardipine",
                 type: "detail-flow",
                 mechanism: ["Dihydropyridine 類鈣通道阻斷劑 (CCB)，選擇性作用於血管平滑肌，舒張小動脈並降低外圍阻力。"],
                 indications: ["高血壓急症 / 腦出血 (ICH)：5~15 mg/hr IVF"],
@@ -724,7 +731,7 @@
             {
                 num: 11,
                 chapter: "單元一：升壓、降壓與強心劑",
-                title: "降壓劑——Labetalol (Trandate, Chenday)",
+                title: "降壓劑——Labetalol",
                 type: "detail-flow",
                 mechanism: [
                     "拮抗 α1 受體：減少周邊血管阻力。",
@@ -753,7 +760,7 @@
             {
                 num: 12,
                 chapter: "單元一：升壓、降壓與強心劑",
-                title: "降壓劑——Esmolol (Brevibloc)",
+                title: "降壓劑——Esmolol",
                 type: "detail-flow",
                 mechanism: [
                     "超短效型、心臟選擇性 β1 受體阻斷劑。",
@@ -785,7 +792,7 @@
             {
                 num: 13,
                 chapter: "單元一：升壓、降壓與強心劑",
-                title: "降壓劑——Nitroglycerin (NTG)",
+                title: "降壓劑——Nitroglycerin",
                 type: "detail-flow",
                 mechanism: ["一氧化氮 (NO) 供體，增加細胞內 cGMP 濃度，舒張靜脈血管平滑肌，降低前負荷 (Preload)。"],
                 indications: ["急性冠心症 (ACS) / 急性心衰竭 / 高血壓急症：5~200 mcg/min IVF"],
@@ -797,7 +804,7 @@
             {
                 num: 14,
                 chapter: "單元一：升壓、降壓與強心劑",
-                title: "強心劑——Dobutamine (Gendobu)",
+                title: "強心劑——Dobutamine",
                 type: "detail-flow",
                 mechanism: ["β1 受體致效劑，強效增加心肌收縮力與心輸出量。"],
                 indications: ["急性心衰竭 / 心因性休克：2~20 mcg/kg/min continuous IVF"],
@@ -809,7 +816,7 @@
             {
                 num: 15,
                 chapter: "單元一：升壓、降壓與強心劑",
-                title: "強心劑——Milrinone (Primacor)",
+                title: "強心劑——Milrinone",
                 type: "detail-flow",
                 mechanism: ["PDE-3 抑制劑，增加心肌細胞內 cAMP 提高收縮力，並舒張血管平滑肌 (Inodilator)。"],
                 indications: ["急性心衰竭 / 心臟移植術後：0.125~0.75 mcg/kg/min continuous IVF"],
@@ -821,7 +828,7 @@
             {
                 num: 16,
                 chapter: "單元一：升壓、降壓與強心劑",
-                title: "強心劑——Isoproterenol (Isuprel)",
+                title: "強心劑——Isoproterenol",
                 type: "detail-flow",
                 mechanism: [
                     "刺激 β1 和 β2 受體：使支氣管、胃腸道與子宮平滑肌鬆弛，增加心率與心肌收縮力，並擴張周邊血管。"
@@ -853,7 +860,7 @@
             {
                 num: 17,
                 chapter: "單元一：升壓、降壓與強心劑",
-                title: "強心劑——Levosimendan (SimDAX)",
+                title: "強心劑——Levosimendan",
                 type: "detail-flow",
                 mechanism: [
                     "增加細胞內鈣離子與心肌 Troponin C 結合之敏感度，增強心臟收縮力。",
@@ -912,16 +919,16 @@
                 type: "table",
                 headers: ["藥名 (Drug)", "機轉 (Mechanism)", "臨床優點", "缺點 / 警告", "常用情境"],
                 rows: [
-                    ["Propofol (Fresofol)", "GABA_A agonist + NMDA 阻斷", "起效極快、容易微調鎮靜深度", "低血壓、呼吸抑制、PRIS 症候群", "ICU 呼吸器短期鎮靜、快速插管"],
+                    ["Propofol", "GABA_A agonist + NMDA 阻斷", "起效極快、容易微調鎮靜深度", "低血壓、呼吸抑制、PRIS 症候群", "ICU 呼吸器短期鎮靜、快速插管"],
                     ["Dexmedetomidine", "中樞 α2 agonist", "不抑制呼吸、可與患者互動", "心搏過慢 (Bradycardia)、低血壓", "輕中度鎮靜、拔管前過渡"],
-                    ["Midazolam (Midatin)", "GABA_A agonist", "起效快、具順向失憶效果", "長用易蓄積致譫妄、代謝物經腎排除", "短期鎮靜、癲癇重積狀態"],
-                    ["Lorazepam (Ativan)", "GABA_A agonist", "作用穩定、無活性代謝物", "恢復慢、高劑量易致 PG 酸中毒", "長期鎮靜、酒精戒斷"]
+                    ["Midazolam", "GABA_A agonist", "起效快、具順向失憶效果", "長用易蓄積致譫妄、代謝物經腎排除", "短期鎮靜、癲癇重積狀態"],
+                    ["Lorazepam", "GABA_A agonist", "作用穩定、無活性代謝物", "恢復慢、高劑量易致 PG 酸中毒", "長期鎮靜、酒精戒斷"]
                 ]
             },
             {
                 num: 21,
                 chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
-                title: "鎮靜劑——Propofol (Fresofol)",
+                title: "鎮靜劑——Propofol",
                 type: "detail-flow",
                 mechanism: ["刺激 GABA_A 受體並阻斷 NMDA 受體，抑制中樞神經系統。"],
                 indications: ["ICU 呼吸器病患鎮靜：5~80 mcg/kg/min continuous IVF", "頑固性癲癇重積狀態：30~60 mcg/kg/min IVF"],
@@ -933,7 +940,7 @@
             {
                 num: 22,
                 chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
-                title: "鎮靜劑——Dexmedetomidine (Precedex)",
+                title: "鎮靜劑——Dexmedetomidine",
                 type: "detail-flow",
                 mechanism: ["選擇性中樞 α2 受體致效劑，作用於藍斑核 (Locus coeruleus)。"],
                 indications: ["ICU 呼吸器與非插管病患鎮靜：0.2~1.5 mcg/kg/hr continuous IVF"],
@@ -945,7 +952,7 @@
             {
                 num: 23,
                 chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
-                title: "鎮靜劑——Midazolam (Midatin)",
+                title: "鎮靜劑——Midazolam",
                 type: "detail-flow",
                 mechanism: ["短效性 Benzodiazepine，刺激 GABA_A 受體，增加氯離子進入細胞，抑制中樞神經。脂溶性高，經肝臟 CYP3A4 代謝。"],
                 indications: ["ICU 呼吸器病患鎮靜：1~8 mg/hr continuous IVF", "頑固性癲癇重積狀態 (Status epilepticus)：0.15~0.2 mg/kg loading, then 0.05~0.4 mg/kg/hr"],
@@ -957,7 +964,7 @@
             {
                 num: 24,
                 chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
-                title: "鎮靜劑——Lorazepam (Ativan)",
+                title: "鎮靜劑——Lorazepam",
                 type: "detail-flow",
                 mechanism: ["中效性 Benzodiazepine，刺激 GABA_A 受體。無活性代謝物，主要經肝臟進行 Glucuronidation 中和代謝。"],
                 indications: ["加護病房長期鎮靜：0.5~10 mg/hr continuous IVF", "酒精戒斷症候群 (AWS)：2~5 mg IV Q1-4H PRN"],
@@ -981,7 +988,7 @@
             {
                 num: 26,
                 chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
-                title: "止痛藥——Morphine (嗎啡)",
+                title: "止痛藥——Morphine",
                 type: "detail-flow",
                 mechanism: ["天然鴉片中樞 μ-opioid 受體致效劑。具鎮靜、止痛與擴張靜脈效果，降低心臟前負荷。"],
                 indications: ["嚴重疼痛 / ACS 心肌梗塞胸痛：2~5 mg IV Q3-4H PRN", "急性肺水腫：2~4 mg IV push"],
@@ -993,7 +1000,7 @@
             {
                 num: 27,
                 chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
-                title: "止痛藥——Tramadol (Tramtor)",
+                title: "止痛藥——Tramadol",
                 type: "detail-flow",
                 mechanism: ["雙重止痛機轉：弱 μ-opioid 受體致效劑 + 抑制 Norepinephrine 與 Serotonin 中樞重吸收。"],
                 indications: ["中至重度疼痛：50~100 mg IV/IM Q4-6H (每日最大劑量 400 mg)"],
@@ -1005,7 +1012,7 @@
             {
                 num: 28,
                 chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
-                title: "止痛藥——Ketamine (K他命)",
+                title: "止痛藥——Ketamine",
                 type: "detail-flow",
                 mechanism: ["非競爭性 NMDA 受體拮抗劑，阻斷穀氨酸傳導，產生解離性麻醉 (Dissociative anesthesia) 與強效止痛。具擬交感活性。"],
                 indications: ["全身麻醉誘導：1~2 mg/kg IV push", "ICU 鎮靜與止痛輔助：0.2~0.5 mg/kg loading, then 0.05~0.4 mg/kg/hr IVF"],
@@ -1017,7 +1024,7 @@
             {
                 num: 29,
                 chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
-                title: "止痛藥——Nalbuphine (Nullipain)",
+                title: "止痛藥——Nalbuphine",
                 type: "detail-flow",
                 mechanism: ["鴉片受體混合型 (Mixed agonist-antagonist)：刺激 κ-opioid 受體發揮止痛，同時競爭性拮抗 μ-opioid 受體。"],
                 indications: ["中重度疼痛、鴉片類引發之搔癢症 (Opioid-induced pruritus)：10~20 mg IV/IM/SC Q3-6H"],
@@ -1042,7 +1049,7 @@
             {
                 num: 31,
                 chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
-                title: "肌肉鬆弛劑——Succinylcholine (Relaxin)",
+                title: "肌肉鬆弛劑——Succinylcholine",
                 type: "detail-flow",
                 mechanism: ["唯一臨床使用的去極化型 NMBA。持續刺激運動終板 ACh 受體致持續去極化，骨骼肌麻痺。"],
                 indications: ["快速麻醉誘導插管 (RSI)：1~1.5 mg/kg IV push"],
@@ -1060,13 +1067,13 @@
                 indications: ["插管 (RSI)：0.6~1.2 mg/kg IV", "ICU continuous IVF：0.6~1 mg/kg loading, then 3~16 mcg/kg/min"],
                 dilutions: ["原液 50 mg/5 mL，或使用 D5W, NS, LR 稀釋 (0.5~5 mg/mL)"],
                 contraindications: ["對 Rocuronium 或 Bromide 過敏者禁用。"],
-                precautions: ["可使用 Sugammadex (Bridion) 進行快速特異性逆轉。", "不具鎮靜與止痛效果！給藥前必須確保患者已處於足夠深度之鎮靜狀態，並有適當呼吸器輔助。", "使用週邊神經刺激器 (PNS) 進行 Train-of-Four (TOF) 監測。酸性藥液不可與鹼性液混合。"],
+                precautions: ["可使用 Sugammadex 進行快速特異性逆轉。", "不具鎮靜與止痛效果！給藥前必須確保患者已處於足夠深度之鎮靜狀態，並有適當呼吸器輔助。", "使用週邊神經刺激器 (PNS) 進行 Train-of-Four (TOF) 監測。酸性藥液不可與鹼性液混合。"],
                 alert: "可用 Sugammadex 特異性逆轉！必須搭配足夠鎮靜！TOF 監測調整劑量！"
             },
             {
                 num: 33,
                 chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
-                title: "肌肉鬆弛劑——Cisatracurium (Nimbex)",
+                title: "肌肉鬆弛劑——Cisatracurium",
                 type: "detail-flow",
                 mechanism: ["非去極化型雙季胺類 NMBA。主要經由體溫與血液 pH 值自發進行 Hofmann degradation (霍夫曼消除) 降解，不依賴肝腎功能。"],
                 indications: ["ARDS 急性呼吸窘迫症候群 / 嚴重過度呼吸：0.1~0.2 mg/kg IV loading, then 1~3 mcg/kg/min continuous IVF"],
@@ -1078,7 +1085,7 @@
             {
                 num: 34,
                 chapter: "單元二：鎮靜、止痛與肌肉鬆弛",
-                title: "肌肉鬆弛劑——Atracurium (Tracrium)",
+                title: "肌肉鬆弛劑——Atracurium",
                 type: "detail-flow",
                 mechanism: ["非去極化型 NMBA。經由 Hofmann degradation 自發性降解與酯類水解 (Ester hydrolysis) 代謝。"],
                 indications: ["ICU 呼吸器輔助肌肉鬆弛：0.4~0.5 mg/kg IV loading, then 4~12 mcg/kg/min IVF"],
@@ -1139,7 +1146,7 @@
             {
                 num: 39,
                 chapter: "單元三：ACLS 常見急救用藥",
-                title: "抗心律不整——Amiodarone (Cordarone)",
+                title: "抗心律不整——Amiodarone",
                 type: "detail-flow",
                 mechanism: ["Class I~IV 全效抗心律不整藥物（鈉通道、α/β 阻斷、延長動作電位、鈣通道阻斷）。"],
                 indications: ["VF / Pulseless VT (ACLS)：300 mg IV/IO push，持續 VF/VT 追加 150 mg", "Stable VT / Af：150 mg IV over 10m, then 1 mg/min 6h, then 0.5 mg/min 18h"],
@@ -1189,7 +1196,7 @@
                 chapter: "單元三：ACLS 常見急救用藥",
                 title: "Calcium Chloride vs. Calcium Gluconate 比較",
                 type: "table",
-                headers: ["項目 (Item)", "Calcium Chloride (氯化鈣 - Vitacal)", "Calcium Gluconate (葡萄糖酸鈣 - Calglon)"],
+                headers: ["項目 (Item)", "Calcium Chloride (氯化鈣)", "Calcium Gluconate (葡萄糖酸鈣)"],
                 rows: [
                     ["元素鈣含量", "高 (10% 10 mL 含 273 mg Ca2+)", "相對低 (10% 10 mL 含 93 mg Ca2+)"],
                     ["血管組織刺激性", "極強 (High osmolarity & irritant)", "較低 (週邊靜脈相對安全)"],
@@ -1202,7 +1209,7 @@
             {
                 num: 44,
                 chapter: "單元三：ACLS 常見急救用藥",
-                title: "酸鹼調節——Sodium Bicarbonate (NaHCO3)",
+                title: "酸鹼調節——Sodium Bicarbonate",
                 type: "detail-flow",
                 mechanism: ["解離提供碳酸氫根離子 (HCO3-)，緩衝血液中過剩氫離子，逆轉酸中毒並鹼化尿液。"],
                 indications: ["代謝性酸中毒 / 高血鉀伴心跳停止：50~100 mEq IV push", "顯影劑腎毒性預防：154 mEq/L 滴注"],
@@ -1279,8 +1286,8 @@
                 title: "Carbapenems 比較與注意事項",
                 type: "multi",
                 items: [
-                    { name: "Ertapenem (Invanz)", desc: "對綠膿桿菌 (Pseudomonas) 無效！不可用葡萄糖液 (D5W) 稀釋 (只能用 NS 稀釋)。" },
-                    { name: "Valproic Acid 交互作用", desc: "Carbapenems 會顯著降低 Valproic acid (Depakene) 血中濃度 (降低 60-90%)，增加癲癇重積風險，不建議合併使用！" },
+                    { name: "Ertapenem", desc: "對綠膿桿菌 (Pseudomonas) 無效！不可用葡萄糖液 (D5W) 稀釋 (只能用 NS 稀釋)。" },
+                    { name: "Valproic Acid 交互作用", desc: "Carbapenems 會顯著降低 Valproic acid 血中濃度 (降低 60-90%)，增加癲癇重積風險，不建議合併使用！" },
                     { name: "中樞癲癇風險排序", desc: "Imipenem > Ertapenem > Meropenem。有癲癇病史者建議優先選擇 Meropenem。" }
                 ],
                 alert: "Ertapenem 對綠膿桿菌無效、不可用 D5W 稀釋！Carbapenems 顯著降低 Valproic acid 濃度！"
@@ -1324,10 +1331,10 @@
                 type: "multi",
                 items: [
                     { name: "Aminoglycosides", desc: "耳毒性與腎毒性。重症肌無力患者禁用。" },
-                    { name: "Linezolid (Zyvox)", desc: "抑菌性。弱 MAOI 作用，避免高酪胺 (Tyramine) 食物 (熟成起司、紅酒) 防高血壓危象；每週監測 CBC。" },
+                    { name: "Linezolid", desc: "抑菌性。弱 MAOI 作用，避免高酪胺 (Tyramine) 食物 (熟成起司、紅酒) 防高血壓危象；每週監測 CBC。" },
                     { name: "Fluoroquinolones", desc: "QTc 延長、肌腱斷裂 (併用類固醇風險增)、低血糖。" },
                     { name: "Metronidazole", desc: "給藥期間及停藥 3 天內絕對禁酒 (Disulfiram-like reaction)。" },
-                    { name: "TMP-SMX (Bactrim)", desc: "限水者稀釋需注意；輸注 60-90 分鐘 (嚴禁推注)。" },
+                    { name: "TMP-SMX", desc: "限水者稀釋需注意；輸注 60-90 分鐘 (嚴禁推注)。" },
                     { name: "Fosfomycin", desc: "含鈉量極高 (2 g/vial 含 663 mg Na)，不建議用 NS 稀釋。" }
                 ],
                 alert: "Metronidazole 嚴禁飲酒！Linezolid 避免高酪胺食物！Fosfomycin 含鈉量高不宜用 NS 稀釋！"
@@ -1335,11 +1342,11 @@
             {
                 num: 54,
                 chapter: "單元四：抗微生物製劑",
-                title: "抗黴菌劑——Echinocandins (Anidulafungin / Micafungin)",
+                title: "抗黴菌劑——Echinocandins",
                 type: "detail-flow",
                 mechanism: ["選擇性抑制真菌細胞壁 β-(1,3)-D-glucan 合成酶，導致細胞壁結構破壞而死。僅供靜脈輸注 (IV)。"],
                 indications: ["侵襲性念珠菌感染 (Invasive candidiasis)、念珠菌血症 (Candidemia)、食道念珠菌感染。"],
-                dilutions: ["Anidulafungin (Eraxis): 200 mg loading, then 100 mg/day (NS or D5W 稀釋)", "Micafungin (Mycamine): 100 mg/day (NS or D5W 稀釋)"],
+                dilutions: ["Anidulafungin: 200 mg loading, then 100 mg/day (NS or D5W 稀釋)", "Micafungin: 100 mg/day (NS or D5W 稀釋)"],
                 contraindications: ["對 Echinocandins 類過敏者禁用；罕見果糖不耐症者禁用 Anidulafungin (含果糖賦形劑)。"],
                 precautions: ["組織分佈限制：在腦脊髓液 (CSF) 與尿液中的藥物濃度極低，絕對不適用於中樞神經感染 (腦膜炎) 或尿路感染！", "肝功能監測：定期抽查 LFTs (ALT/AST)，留意肝毒性。"],
                 alert: "在 CSF 與尿液中濃度極低！不適用於腦膜炎或尿路感染！"
@@ -1347,11 +1354,11 @@
             {
                 num: 55,
                 chapter: "單元四：抗微生物製劑",
-                title: "抗黴菌劑——Amphotericin B (Fungizone / AmBisome)",
+                title: "抗黴菌劑——Amphotericin B",
                 type: "detail-flow",
                 mechanism: ["結合真菌細胞膜上的 Ergosterol (麥角固醇)，改變膜通透性致細胞內容物滲漏死亡。"],
                 indications: ["嚴重深部真菌感染、隱球菌腦膜炎 (Cryptococcal meningitis)、毛黴菌病 (Mucormycosis)。"],
-                dilutions: ["傳統型 (Fungizone): 0.5~1.5 mg/kg/day", "脂質體型 (AmBisome): 3~5 mg/kg/day (極低腎毒性)"],
+                dilutions: ["傳統型: 0.5~1.5 mg/kg/day", "脂質體型: 3~5 mg/kg/day (極低腎毒性)"],
                 contraindications: ["對 Amphotericin B 嚴重過敏者禁用。"],
                 precautions: ["稀釋限制：嚴禁使用 NS 或電解質溶液稀釋！與鹽類接觸會立即產生金屬沉澱，僅限使用 D5W 稀釋！", "預防腎毒性：給藥前 30 分鐘靜脈輸注 500~1000 mL NS 水合。", "預防輸注反應：給藥前 30 分鐘給予 Acetaminophen + Diphenhydramine ± Hydrocortisone。"],
                 alert: "嚴禁使用 NS 稀釋（只能用 D5W）！給藥前前置 500-1000 mL NS 水合防腎毒！"
@@ -1376,7 +1383,7 @@
                 type: "multi",
                 items: [
                     { name: "Azoles 類交互作用", desc: "強效 CYP450 抑制劑 (增加 Warfarin, Tacrolimus 濃度)。多數致 QTc 延長，惟獨 Isavuconazole 致 QTc 縮短！" },
-                    { name: "Voriconazole (Vfend)", desc: "短暫視覺障礙、幻覺與骨膜炎。針劑含 SBECD 賦形劑，CrCl <50 mL/min 時易蓄積致腎毒，建議改口服。" },
+                    { name: "Voriconazole", desc: "短暫視覺障礙、幻覺與骨膜炎。針劑含 SBECD 賦形劑，CrCl <50 mL/min 時易蓄積致腎毒，建議改口服。" },
                     { name: "Flucytosine (5-FC)", desc: "併用 Liposomal Amphotericin B 治療隱球菌腦膜炎；留意骨髓抑制。" },
                     { name: "Terbinafine", desc: "CYP2D6 抑制劑；慢性或活動性肝病患者禁用。" }
                 ],
@@ -1407,13 +1414,13 @@
                     "Flumazenil BZD 拮抗之癲癇誘發風險。",
                     "Naloxone 鴉片類逆轉之半衰期落差與再鎮靜監測。",
                     "Glucagon 於 β-blocker / CCB 中毒之強心應用。",
-                    "Idarucizumab (Praxbind) 專一性 Dabigatran 反轉。"
+                    "Idarucizumab 專一性 Dabigatran 反轉。"
                 ]
             },
             {
                 num: 60,
                 chapter: "單元五：解毒用藥",
-                title: "解毒劑——Pralidoxime (PAM)",
+                title: "解毒劑——Pralidoxime",
                 type: "detail-flow",
                 mechanism: ["乙醯膽鹼酯酶 (AChE) 重活化劑。競爭性結合有機磷分子的磷醯基，恢復膽鹼酯酶破壞 ACh 的活性。"],
                 indications: ["有機磷農藥 (Organophosphate) 中毒解毒：30 mg/kg IV loading (over 30m), then 8~10 mg/kg/hr continuous IVF"],
@@ -1425,7 +1432,7 @@
             {
                 num: 61,
                 chapter: "單元五：解毒用藥",
-                title: "解毒劑——Flumazenil (Anexate)",
+                title: "解毒劑——Flumazenil",
                 type: "detail-flow",
                 mechanism: [" Benzodiazepine (BZD) 競爭性中樞受體拮抗劑。專一性中和 BZD 類藥物之鎮靜、失憶與呼吸抑制。"],
                 indications: ["BZD 鎮靜過量解毒 / 疑中 BZD 中毒昏迷：0.2 mg IV over 30s，必要時追加 0.3~0.5 mg"],
@@ -1437,7 +1444,7 @@
             {
                 num: 62,
                 chapter: "單元五：解毒用藥",
-                title: "解毒劑——Naloxone (納洛酮)",
+                title: "解毒劑——Naloxone",
                 type: "detail-flow",
                 mechanism: ["專一性中樞 μ, κ, δ 鴉片受體競爭性拮抗劑。完全逆轉鴉片類藥物引起的呼吸抑制與鎮靜。"],
                 indications: ["鴉片類藥物過量致呼吸抑制：0.04~2 mg IV/IM/IO (每 2-3 分鐘可重複)"],
@@ -1449,7 +1456,7 @@
             {
                 num: 63,
                 chapter: "單元五：解毒用藥",
-                title: "解毒劑——Glucagon (升糖素)",
+                title: "解毒劑——Glucagon",
                 type: "detail-flow",
                 mechanism: ["繞過 β 受體，直接活化心肌細胞上的升糖素受體，增加細胞內 cAMP 濃度，提升心率與心肌收縮力。"],
                 indications: ["Beta-blocker 或 CCB (鈣離子阻斷劑) 中毒過量：5~10 mg IV loading (over 3-5m), then 2~5 mg/hr IVF"],
@@ -1461,9 +1468,9 @@
             {
                 num: 64,
                 chapter: "單元五：解毒用藥",
-                title: "新型特異性反轉劑——Idarucizumab (Praxbind)",
+                title: "新型特異性反轉劑——Idarucizumab",
                 type: "detail-flow",
-                mechanism: ["人源化單克隆抗體片段 (Fab)，專一性結合 Dabigatran (Pradaxa)，親和力比 Thrombin 強 300~350 倍，迅速中和抗凝血作用。"],
+                mechanism: ["人源化單克隆抗體片段 (Fab)，專一性結合 Dabigatran，親和力比 Thrombin 強 300~350 倍，迅速中和抗凝血作用。"],
                 indications: ["專一性反轉 Dabigatran 抗凝血作用 (緊急手術或大出血)：總劑量 5 g IV (2 vials，每瓶 2.5 g/50 mL)"],
                 dilutions: ["不須稀釋。每瓶 2.5 g 靜脈輸注 5~10 分鐘，兩瓶間隔不超過 15 分鐘。"],
                 contraindications: ["本藥無顯著禁忌症，但僅能拮抗 Dabigatran，無效於 Warfarin, Rivaroxaban 或 Apixaban。"],
@@ -1546,23 +1553,23 @@
                 `;
             } else if (slide.type === 'agenda') {
                 html = `
-                    <div class="frameless-columns" style="height: 100%;">
-                        <div class="column-block" style="display: flex; flex-direction: column; justify-content: space-around; height: 100%;">
-                            ${slide.modules.slice(0, 3).map(m => `
-                                <div style="padding: 14px 0; border-bottom: 2px dashed var(--primary-light);">
-                                    <div class="section-title" style="font-size: 28px;"><i class="fa-solid fa-folder-open"></i> ${m.num}：${m.title}</div>
-                                    <p style="font-size: 22px; color: var(--text-muted); line-height: 1.5; margin-top: 10px;">${m.desc}</p>
+                    <div style="display: flex; flex-direction: column; justify-content: space-around; height: 100%;">
+                        ${[0, 1, 2].map(rIdx => {
+                            const m1 = slide.modules[rIdx];
+                            const m2 = slide.modules[rIdx + 3];
+                            return `
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 35px; align-items: start; padding: 12px 0; ${rIdx < 2 ? 'border-bottom: 2px dashed var(--primary-light);' : ''}">
+                                    <div>
+                                        <div class="section-title" style="font-size: 28px;"><i class="fa-solid fa-folder-open"></i> ${m1.num}：${m1.title}</div>
+                                        <p style="font-size: 22px; color: var(--text-muted); line-height: 1.5; margin-top: 10px;">${m1.desc}</p>
+                                    </div>
+                                    <div>
+                                        <div class="section-title" style="font-size: 28px;"><i class="fa-solid fa-folder-open"></i> ${m2.num}：${m2.title}</div>
+                                        <p style="font-size: 22px; color: var(--text-muted); line-height: 1.5; margin-top: 10px;">${m2.desc}</p>
+                                    </div>
                                 </div>
-                            `).join('')}
-                        </div>
-                        <div class="column-block" style="display: flex; flex-direction: column; justify-content: space-around; height: 100%;">
-                            ${slide.modules.slice(3).map(m => `
-                                <div style="padding: 14px 0; border-bottom: 2px dashed var(--primary-light);">
-                                    <div class="section-title" style="font-size: 28px;"><i class="fa-solid fa-folder-open"></i> ${m.num}：${m.title}</div>
-                                    <p style="font-size: 22px; color: var(--text-muted); line-height: 1.5; margin-top: 10px;">${m.desc}</p>
-                                </div>
-                            `).join('')}
-                        </div>
+                            `;
+                        }).join('')}
                     </div>
                 `;
             } else if (slide.type === 'transition') {
